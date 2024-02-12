@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:21:15 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/12 16:45:14 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/02/12 20:06:23 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/02/12 20:33:14 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef CONTACT_HPP
+#define CONTACT_HPP
 
-int	main(int ac, char **av)
+class Contact
 {
-	if (ac > 1)
-	{
-		int i = 1;
+	public:
+		Contact();
+		~Contact();
 
-		while (av[i])
-		{
-			int j = 0;
-			while (av[i][j])
-			{
-				if (av[i][j] >= 'a' && av[i][j] <= 'z')
-					av[i][j] -= 32;
-				std::cout << av[i][j];
-				j++;
-			}
-			i++;
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return (0);
-}
+		void MethodContact();
+};
+
+#endif

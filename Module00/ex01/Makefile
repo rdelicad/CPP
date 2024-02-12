@@ -1,6 +1,6 @@
 # Variables
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -g
+CXXFLAGS = -Wall -Wextra -Werror -g --std=c++98
 
 # Nombre ejecutable
 NAME = megaphone

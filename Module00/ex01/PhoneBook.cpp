@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.Class.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 10:21:15 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/12 16:45:14 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/02/12 20:07:00 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/02/12 20:45:00 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "PhoneBook.hpp"
 
-int	main(int ac, char **av)
+PhoneBook::PhoneBook()
 {
-	if (ac > 1)
-	{
-		int i = 1;
+	//constructor
+}
 
-		while (av[i])
-		{
-			int j = 0;
-			while (av[i][j])
-			{
-				if (av[i][j] >= 'a' && av[i][j] <= 'z')
-					av[i][j] -= 32;
-				std::cout << av[i][j];
-				j++;
-			}
-			i++;
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
-	return (0);
+PhoneBook::~PhoneBook()
+{
+	//destructor
+}
+void PhoneBook::MethodPhoneBook()
+{
+	std::cout << "Method two" << std::endl;
 }
