@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.Class.cpp                                :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:07:00 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/12 20:45:00 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:28:17 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook()
-{
-	//constructor
-}
+PhoneBook::PhoneBook() {}
+PhoneBook::~PhoneBook() {}
 
-PhoneBook::~PhoneBook()
-{
-	//destructor
-}
-void PhoneBook::MethodPhoneBook()
-{
-	std::cout << "Method two" << std::endl;
-}
+Contact PhoneBook::getContact(int index)
+{}

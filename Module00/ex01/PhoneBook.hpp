@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:06:13 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/12 20:47:20 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/13 17:20:56 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 #define PHONEBOOK_HPP
 
 // includes
-//#include "agenda.h"
+#include "Contact.hpp"
 
 // Clases
 class PhoneBook
 {
 	private:
-		int var;
+		Contact PersonContact[8];
 	public:
-		void MethodPhoneBook();
+		PhoneBook();
+		~PhoneBook();
+		Contact getContact(int index);
+		void setContact(Contact contact, int index);
+		
 };
 
 #endif
