@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 20:06:13 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/13 17:20:56 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/02/12 20:07:00 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/02/14 13:56:41 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include <iostream>
+#include "PhoneBook.hpp"
 
-// includes
-#include "Contact.hpp"
+PhoneBook::PhoneBook() {}
+PhoneBook::~PhoneBook() {}
 
-// Clases
-class PhoneBook
+Contact PhoneBook::getContact(int index)
 {
-	private:
-		Contact PersonContact[8];
-	public:
-		PhoneBook();
-		~PhoneBook();
-		Contact getContact(int index);
-		void setContact(Contact contact, int index);
-		
-};
-
-#endif
+	if (index < 0 || index > 8)
+		std::cout << "Introduce un focking numero correcto" << std::endl;
+	return PersonContact[index];
+}

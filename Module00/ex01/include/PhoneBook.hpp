@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 20:07:00 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/13 17:28:17 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/02/12 20:06:13 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/02/14 13:46:31 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "PhoneBook.hpp"
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-PhoneBook::PhoneBook() {}
-PhoneBook::~PhoneBook() {}
+#define MAX_CONTACTS 8
 
-Contact PhoneBook::getContact(int index)
-{}
+// includes
+#include "Contact.hpp"
+
+// Clases
+class PhoneBook
+{
+	private:
+		Contact PersonContact[MAX_CONTACTS];
+	public:
+		PhoneBook();
+		~PhoneBook();
+		Contact getContact(int index);
+		void setContact(Contact contact, int index);
+		
+};
+
+#endif

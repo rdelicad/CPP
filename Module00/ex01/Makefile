@@ -1,35 +1,33 @@
-# Variables
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/14 15:03:25 by rdelicad          #+#    #+#              #
+#    Updated: 2024/02/14 15:04:07 by rdelicad         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
 CXX = g++
-CXXFLAGS = -Wall -Wextra -Werror -g --std=c++98
-
-# Nombre ejecutable
-NAME = megaphone
-
-# Archivos fuente
-SRCS = megaphone.cpp
-
-# Archivos objeto
-OBJS = $(SRCS:.cpp=.o)
-
-# Reglas por defecto
+CXXFLAGS = -Wall -Wextra -Werror -g --std=c++98 -Iinclude
+NAME = agenda
+SRCS = PhoneBook.cpp Contact.cpp main.cpp
+OBJS = $(addprefix obj/,$(SRCS:.cpp=.o))
 all: $(NAME)
-
-# Regla para el ejecutable
+create_dir:
+	@mkdir -p obj
+vpath %.cpp src
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
-
-# Regla para los archivos objeto
-$(OBJS): %.o: %.cpp 
+$(OBJS): obj/%.o: %.cpp | create_dir 
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Regla para limpiar los archivos generados
 clean:
 	rm -f $(OBJS) $(NAME)
-
 fclean: clean
 	rm -f $(NAME)
-
-# Regla para ejecutar el programa
 run: $(NAME)
 	./$(NAME)
 
