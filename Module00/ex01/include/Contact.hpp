@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:06:23 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/14 14:04:30 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/15 20:04:37 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class Contact
 	private:
 		std::string _firstName;
 		std::string _lastName;
-		std::string _nickname;
+		std::string _nickName;
 		std::string _phoneNumber;
 		std::string _darkestSecret;
 	public:
