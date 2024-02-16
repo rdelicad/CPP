@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:06:23 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/15 20:04:37 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/16 18:18:57 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ class Contact
 		void setNickName(std::string nick);
 		void setPhoneNumber(std::string phone);
 		void setDarkestSecret(std::string secret);
+		void getUserData();
+		/* std::string getLastName();
+		std::string getNickName();
+		std::string getPhoneNumber();
+		std::string getDarkestSecret(); */
 };
 
 #endif

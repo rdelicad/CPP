@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:06:13 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/16 10:51:03 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:06:35 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 class PhoneBook
 {
 	private:
-		Contact PersonContact[MAX_CONTACTS];
+	Contact	 PersonContact[MAX_CONTACTS];
 	public:
 		PhoneBook();
 		~PhoneBook();

@@ -1,19 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/16 15:39:48 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/02/16 18:34:57 by rdelicad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "agenda.h"
 
 int	main(void)
 {
-	std::string	option;
-	/* Contact hola;
-	hola._firstName = "qwewqe";
-	Contact *holaPtr = new Contact();  */
-	option = initMenu();
-	typeOption(option);
+	PhoneBook	*agenda;
+	std::string option;
+
+	agenda = new PhoneBook();
+	option = "";
+	while (option != "EXIT")
+	{
+		if (option == "")
+		{
+			option = initMenu();
+		}
+		option = typeOption(agenda, option);
+	}
 	return (0);
 }
 
-std::string	initMenu()
+std::string initMenu()
 {
-	std::string option;
+	std::string	option;
 
 	clearConsole();
 	std::cout << std::endl;
@@ -27,33 +47,29 @@ std::string	initMenu()
 	return (option);
 }
 
-void	typeOption(std::string option)
+std::string	typeOption(PhoneBook *agenda, std::string option)
 {
-	PhoneBook	*agenda = new PhoneBook();
-	while (option != "EXIT") 
+	if (option == "ADD" || option == "add")
 	{
-		if (option == "ADD" || option == "add")
-		{
-			clearConsole();
-			addContact(agenda);
-			option = "";
-		}
-		else if (option == "SEARCH" || option == "search")
-		{
-			std::cout << "escribiste ADD" << std::endl;
-			//std::string	searchContact*agenda);
-		}
-		else if (option == "EXIT" || option == "exit")
-			exit (0);
-		else
-		{
-			clearConsole();
-			typeOption(initMenu());
-		}
+		clearConsole();
+		addContact(agenda);
+		option = "";
 	}
+	else if (option == "SEARCH" || option == "search")
+	{
+		searchContact(agenda);
+		option = "";
+	}
+	else if (option == "EXIT" || option == "exit")
+	{
+		exit(0);
+	}
+	else
+		option = "";
+	return (option);
 }
 
-void	clearConsole()
+void	clearConsole(void)
 {
 	std::system("clear");
 }
