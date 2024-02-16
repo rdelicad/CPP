@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:00:43 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/16 18:19:28 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:47:13 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void Contact::setDarkestSecret(std::string secret)
 }
 void Contact::getUserData()
 {
-	std::cout << _firstName + "\t" + _lastName + "\t" << std::endl;
+	std::cout << _firstName + "\t|" + _lastName + "\t|" 
+			   + _nickName + "\t|"  + _phoneNumber << std::endl;
 }
 /* std::string Contact::getLastName() {
 	return (_lastName);

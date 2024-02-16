@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:07:00 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/16 19:29:44 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:39:54 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void PhoneBook::listContact()
 	int i;
 	std::string continueOption;
 	i = 0;
+	std::cout << "lastName\tlastName\tnickName\tphoneNumber" << std::endl;
 	while (i < 8)
 	{
 		PersonContact[i].getUserData();
 		i++;
 	}
 	std::cout << "Press [Enter] to continue!!" << std::endl;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //ignora el enter
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	// ignora el enter
 	std::cin.get();
 }
