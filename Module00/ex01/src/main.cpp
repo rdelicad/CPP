@@ -29,19 +29,27 @@ std::string	initMenu()
 
 void	typeOption(std::string option)
 {
-	if (option == "ADD" || option == "add")
+	PhoneBook	*agenda = new PhoneBook();
+	while (option != "EXIT") 
 	{
-		clearConsole();
-		addContact();
-	}
-	else if (option == "SEARCH" || option == "search")
-		std::cout << "escribiste ADD" << std::endl;
-	else if (option == "EXIT" || option == "exit")
-		exit (0);
-	else
-	{
-		clearConsole();
-		typeOption(initMenu());
+		if (option == "ADD" || option == "add")
+		{
+			clearConsole();
+			addContact(agenda);
+			option = "";
+		}
+		else if (option == "SEARCH" || option == "search")
+		{
+			std::cout << "escribiste ADD" << std::endl;
+			//std::string	searchContact*agenda);
+		}
+		else if (option == "EXIT" || option == "exit")
+			exit (0);
+		else
+		{
+			clearConsole();
+			typeOption(initMenu());
+		}
 	}
 }
 

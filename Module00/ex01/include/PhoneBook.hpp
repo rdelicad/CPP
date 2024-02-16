@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:06:13 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/14 13:46:31 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/16 10:51:03 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class PhoneBook
 		~PhoneBook();
 		Contact getContact(int index);
 		void setContact(Contact contact, int index);
-		
+		void listContact();
 };
 
 #endif
