@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:39:48 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/16 19:55:20 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/17 12:09:31 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 
 int	main(void)
 {
-	PhoneBook	*agenda;
-	std::string option;
+	t_data	data;
 
-	agenda = new PhoneBook();
-	option = "";
-	while (option != "EXIT")
+	initData(&data);
+	data.option = "";
+	while (data.option != "EXIT")
 	{
-		if (option == "")
+		if (data.option == "")
 		{
-			option = initMenu();
+			data.option = initMenu();
 		}
-		option = typeOption(agenda, option);
+		data.option = typeOption(&data);
 	}
+	delete data.agenda;
+	delete data.currentContact;
+	data.agenda = 0;
 	return (0);
 }
 
@@ -47,29 +49,37 @@ std::string initMenu()
 	return (option);
 }
 
-std::string	typeOption(PhoneBook *agenda, std::string option)
+std::string	typeOption(t_data *d)
 {
-	if (option == "ADD" || option == "add")
+	if (d->option == "ADD" || d->option == "add")
 	{
 		clearConsole();
-		addContact(agenda);
-		option = "";
+		addContact(d);
+		d->option = "";
 	}
-	else if (option == "SEARCH" || option == "search")
+	else if (d->option == "SEARCH" || d->option == "search")
 	{
-		searchContact(agenda);
-		option = "";
+		searchContact(d);
+		d->option = "";
 	}
-	else if (option == "EXIT" || option == "exit")
+	else if (d->option == "EXIT" || d->option == "exit")
 	{
-		exit(0);
+		d->option = "EXIT";
 	}
 	else
-		option = "";
-	return (option);
+	d->option = "";
+	return (d->option);
 }
 
 void	clearConsole(void)
 {
 	std::system("clear");
+}
+
+void	initData(t_data *data)
+{
+	data->agenda = new PhoneBook();
+	data->currentContact = new Contact();
+	data->option = "";
+	data->index = 0;
 }

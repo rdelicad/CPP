@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:00:43 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/16 19:47:13 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/17 12:26:29 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,46 +17,46 @@ Contact::Contact()
 {
 	std::cout << "Contact constructor" << std::endl;
 }
+
 Contact::~Contact()
 {
 	std::cout << "Contact destructor" << std::endl;
 }
 
-void Contact::setFirstName(std::string name)
+void Contact::setUserData(std::string input)
 {
-	_firstName = name;
+	int	i;
+
+	i = 0;
+	while (i < 5)
+	{
+		switch(i)
+		{
+			case 0:
+				_firstName = input;
+				break;
+			case 1:
+				_lastName = input;
+				break;
+			case 2:
+				_nickName = input;
+				break;
+			case 3:
+				_phoneNumber = input;
+				break;
+			case 4:
+				_darkSecret = input;
+				break;
+		}
+		i++;
+	}
 }
-void Contact::setLastName(std::string last)
-{
-	_lastName = last;
-}
-void Contact::setNickName(std::string nick)
-{
-	_nickName = nick;
-}
-void Contact::setPhoneNumber(std::string phone)
-{
-	_phoneNumber = phone;
-}
-void Contact::setDarkestSecret(std::string secret)
-{
-	_darkestSecret = secret;
-}
+
 void Contact::getUserData()
 {
 	std::cout << _firstName + "\t|" + _lastName + "\t|" 
 			   + _nickName + "\t|"  + _phoneNumber << std::endl;
+	// 10 caracteres
+	// alienados a la derecha y separados por un (|)
+	// truncarse con un .   lsdkjlsdfj.
 }
-/* std::string Contact::getLastName() {
-	return (_lastName);
-}
-std::string Contact::getNickName() {
-	return (_nickName);
-}
-std::string Contact::getPhoneNumber() {
-	return (_phoneNumber);
-}
-std::string Contact::getDarkestSecret() {
-	return (_darkestSecret);
-}
- */

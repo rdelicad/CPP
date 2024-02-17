@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:07:00 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/16 19:39:54 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/17 12:18:19 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ Contact PhoneBook::getContact(int index)
 	return (PersonContact[index]);
 }
 
-void PhoneBook::setContact(Contact contact, int index)
+void PhoneBook::setContact(Contact *contact, int index)
 {
 	if (index >= 0 && index < MAX_CONTACTS)
-		PersonContact[index] = contact;
+		PersonContact[index] = *contact;
 	else
 		std::cout << "Index out of range. Please enter a number between 0 and " << MAX_CONTACTS
 			- 1 << "." << std::endl;
@@ -43,14 +43,14 @@ void PhoneBook::listContact()
 	int i;
 	std::string continueOption;
 	i = 0;
-	std::cout << "lastName\tlastName\tnickName\tphoneNumber" << std::endl;
+	std::cout << " FirstName|  LastName|  NickName|     Phone|" << std::endl;
 	while (i < 8)
 	{
 		PersonContact[i].getUserData();
 		i++;
 	}
+	std::cout << std::endl;
 	std::cout << "Press [Enter] to continue!!" << std::endl;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	// ignora el enter
+	std::cin.ignore(10000, '\n');
 	std::cin.get();
 }

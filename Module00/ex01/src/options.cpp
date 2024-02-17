@@ -6,52 +6,38 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 19:16:34 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/16 19:48:57 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/17 12:14:33 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "agenda.h"
 
-void	addContact(PhoneBook *agenda)
+void	addContact(t_data *d)
 {
 	int		i;
-	Contact	currentContact;
 
 	std::string input;
-	std::string array[5] = {"name", "last", "nick", "phone", "secret"};
+	std::string array[5] = {"first name", "last name", "nick name", "phone number", "dark secret"};
 	i = 0;
 	do
 	{
-		std::cout << "add first " << array[i] << std::endl;
+		std::cout << "add " << array[i] << std::endl;
 		std::cin >> input;
-		switch (i)
-		{
-		case 0:
-			currentContact.setFirstName(input);
-			break ;
-		case 1:
-			currentContact.setLastName(input);
-			break ;
-		case 2:
-			currentContact.setNickName(input);
-			break ;
-		case 3:
-			currentContact.setPhoneNumber(input);
-			break ;
-		case 4:
-			currentContact.setDarkestSecret(input);
-			break ;
-		}
+		d->currentContact->setUserData(input);
 		i++;
 	} while (i < 5 && input != "");
-	agenda->setContact(currentContact, 0);
+	if (d->index == 8)
+		d->index = 0;
+	d->agenda->setContact(d->currentContact, d->index);
+	d->index++;
 	std::cout << std::endl;
 	std::cout << "the contact has been added" << std::endl;
 	std::cout << std::endl;
 }
 
 
-void	searchContact(PhoneBook *agenda)
+void	searchContact(t_data *d)
 {
-	agenda->listContact();
+	clearConsole();
+	d->agenda->listContact();
 }
