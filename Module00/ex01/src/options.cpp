@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 19:16:34 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/17 12:14:33 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:41:06 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	addContact(t_data *d)
 	{
 		std::cout << "add " << array[i] << std::endl;
 		std::cin >> input;
-		d->currentContact->setUserData(input);
+		d->currentContact->setUserData(input, i);
 		i++;
 	} while (i < 5 && input != "");
 	if (d->index == 8)
 		d->index = 0;
-	d->agenda->setContact(d->currentContact, d->index);
+	d->agenda->addAContact(d->currentContact, d->index);
 	d->index++;
 	std::cout << std::endl;
 	std::cout << "the contact has been added" << std::endl;

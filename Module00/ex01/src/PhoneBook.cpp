@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:07:00 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/17 12:18:19 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:47:31 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,34 @@
 #include <iostream>
 
 PhoneBook::PhoneBook()
-{
-	std::cout << "PhoneBook constructor" << std::endl;
-}
+{}
 PhoneBook::~PhoneBook()
+{}
+
+void PhoneBook::getContact()
 {
-	std::cout << "PhoneBook destructor" << std::endl;
+	int			id;
+	std::string input;
+
+	std::cout << std::endl;
+	std::cout << "Select the [index] of the contact you wish to view!!" << std::endl;
+	std::cin.ignore(10000, '\n');
+	while (1)
+	{
+		std::getline(std::cin, input);
+		if (input.length() == 1 && input[0] >= '0' && input[0] <= '7')
+		{
+			id = input[0] - '0';
+			break;
+		} else 
+		{
+			std::cout << "Error: ¡Entrada inválida!" << std::endl;
+		}
+	}
+	PersonContact[id].showContact();
 }
 
-Contact PhoneBook::getContact(int index)
-{
-	if (index < 0 || index > 8)
-		std::cout << "Introduce un focking numero correcto" << std::endl;
-	return (PersonContact[index]);
-}
-
-void PhoneBook::setContact(Contact *contact, int index)
+void PhoneBook::addAContact(Contact *contact, int index)
 {
 	if (index >= 0 && index < MAX_CONTACTS)
 		PersonContact[index] = *contact;
@@ -38,19 +50,16 @@ void PhoneBook::setContact(Contact *contact, int index)
 			- 1 << "." << std::endl;
 }
 
-void PhoneBook::listContact()
+void	PhoneBook::listContact()
 {
-	int i;
-	std::string continueOption;
+	int 		i;
+
 	i = 0;
-	std::cout << " FirstName|  LastName|  NickName|     Phone|" << std::endl;
+	std::cout << "|     Index| FirstName|  LastName|  NickName|" << std::endl;
+	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	while (i < 8)
 	{
 		PersonContact[i].getUserData();
 		i++;
 	}
-	std::cout << std::endl;
-	std::cout << "Press [Enter] to continue!!" << std::endl;
-	std::cin.ignore(10000, '\n');
-	std::cin.get();
 }

@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:39:48 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/17 12:09:31 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:42:15 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(void)
 			data.option = initMenu();
 		}
 		data.option = typeOption(&data);
+		if (std::cin.eof())
+			break;
 	}
 	delete data.agenda;
 	delete data.currentContact;
@@ -38,7 +40,6 @@ std::string initMenu()
 	std::string	option;
 
 	clearConsole();
-	std::cout << std::endl;
 	std::cout << "Welcome to the Contact Book" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Choose an option" << std::endl;
@@ -60,6 +61,10 @@ std::string	typeOption(t_data *d)
 	else if (d->option == "SEARCH" || d->option == "search")
 	{
 		searchContact(d);
+		d->agenda->getContact();
+		std::cout << std::endl;
+		std::cout << "Press [Enter] to continue!!" << std::endl;
+		std::cin.get();
 		d->option = "";
 	}
 	else if (d->option == "EXIT" || d->option == "exit")

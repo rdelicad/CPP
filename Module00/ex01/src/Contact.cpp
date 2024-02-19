@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:00:43 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/17 12:26:29 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:43:42 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,13 @@
 #include <iostream>
 
 Contact::Contact()
-{
-	std::cout << "Contact constructor" << std::endl;
-}
+{}
 
 Contact::~Contact()
-{
-	std::cout << "Contact destructor" << std::endl;
-}
+{}
 
-void Contact::setUserData(std::string input)
+void Contact::setUserData(std::string input, int i)
 {
-	int	i;
-
-	i = 0;
 	while (i < 5)
 	{
 		switch(i)
@@ -52,11 +45,38 @@ void Contact::setUserData(std::string input)
 	}
 }
 
-void Contact::getUserData()
+int Contact::count = 0;
+
+void	Contact::getUserData()
 {
-	std::cout << _firstName + "\t|" + _lastName + "\t|" 
-			   + _nickName + "\t|"  + _phoneNumber << std::endl;
-	// 10 caracteres
-	// alienados a la derecha y separados por un (|)
-	// truncarse con un .   lsdkjlsdfj.
+	std::string firstNameDisplay = _firstName;
+    std::string lastNameDisplay = _lastName;
+    std::string nickNameDisplay = _nickName;
+
+    if (firstNameDisplay.size() > 10)
+        firstNameDisplay = firstNameDisplay.substr(0, 9) + ".";
+    if (lastNameDisplay.size() > 10)
+        lastNameDisplay = lastNameDisplay.substr(0, 9) + ".";
+    if (nickNameDisplay.size() > 10)
+        nickNameDisplay = nickNameDisplay.substr(0, 9) + ".";
+		
+    while (firstNameDisplay.size() < 10)
+        firstNameDisplay =  " " + firstNameDisplay;
+    while (lastNameDisplay.size() < 10)
+        lastNameDisplay = " " + lastNameDisplay;
+    while (nickNameDisplay.size() < 10)
+        nickNameDisplay = " " + nickNameDisplay;
+
+	std::cout <<"|         " + std::to_string(count) + "|" + firstNameDisplay + "|" 
+        + lastNameDisplay + "|"  +  nickNameDisplay + "|" << std::endl;
+    count = (count + 1) % 8;
+}
+
+void	Contact::showContact()
+{
+	std::cout << "firtName : " + _firstName << std::endl;
+	std::cout << "lastName : " + _lastName << std::endl;
+	std::cout << "nickName : " + _nickName << std::endl;
+	std::cout << "numberPhone : " + _phoneNumber << std::endl;
+	std::cout << "darkSecret : " + _darkSecret << std::endl;
 }

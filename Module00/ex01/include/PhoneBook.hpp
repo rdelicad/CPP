@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:06:13 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/17 11:57:25 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:14:40 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ class PhoneBook
 	public:
 		PhoneBook();
 		~PhoneBook();
-		Contact getContact(int index);
-		void setContact(Contact *contact, int index);
-		void listContact();
+		void	addAContact(Contact *contact, int index);
+		void	listContact();
+		void	getContact();
 };
 
 #endif

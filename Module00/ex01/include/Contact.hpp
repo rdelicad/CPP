@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:06:23 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/17 10:59:13 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:35:02 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ class Contact
 	public:
 		Contact();
 		~Contact();
-		void setUserData(std::string input);
-		void getUserData();
+		static int	count;
+		void 		setUserData(std::string input, int i);
+		void 		getUserData();
+		void		showContact();
 };
 
 #endif
