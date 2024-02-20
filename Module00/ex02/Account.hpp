@@ -18,45 +18,49 @@
 
 class Account {
 
-
 public:
 
-	typedef Account		t;
+    // Define un alias para el tipo Account
+    typedef Account t;
 
-	static int	getNbAccounts( void );
-	static int	getTotalAmount( void );
-	static int	getNbDeposits( void );
-	static int	getNbWithdrawals( void );
-	static void	displayAccountsInfos( void );
+    // Métodos estáticos para obtener información sobre todas las cuentas
+    static int getNbAccounts( void ); // Obtiene el número de cuentas
+    static int getTotalAmount( void ); // Obtiene la cantidad total en todas las cuentas
+    static int getNbDeposits( void ); // Obtiene el número total de depósitos realizados
+    static int getNbWithdrawals( void ); // Obtiene el número total de retiros realizados
+    static void displayAccountsInfos( void ); // Muestra la información de todas las cuentas
 
-	Account( int initial_deposit );
-	~Account( void );
+    // Constructor y destructor
+    Account( int initial_deposit ); // Constructor que toma un depósito inicial
+    ~Account( void ); // Destructor
 
-	void	makeDeposit( int deposit );
-	bool	makeWithdrawal( int withdrawal );
-	int		checkAmount( void ) const;
-	void	displayStatus( void ) const;
-
+    // Métodos para interactuar con una cuenta individual
+    void makeDeposit( int deposit ); // Realiza un depósito
+    bool makeWithdrawal( int withdrawal ); // Realiza un retiro, devuelve true si fue exitoso, false si no
+    int checkAmount( void ) const; // Comprueba la cantidad de dinero en la cuenta
+    void displayStatus( void ) const; // Muestra el estado de la cuenta
 
 private:
 
-	static int	_nbAccounts;
-	static int	_totalAmount;
-	static int	_totalNbDeposits;
-	static int	_totalNbWithdrawals;
+    // Variables estáticas para almacenar información sobre todas las cuentas
+    static int _nbAccounts; // Número de cuentas
+    static int _totalAmount; // Cantidad total en todas las cuentas
+    static int _totalNbDeposits; // Número total de depósitos realizados
+    static int _totalNbWithdrawals; // Número total de retiros realizados
 
-	static void	_displayTimestamp( void );
+    // Método estático para mostrar la hora actual
+    static void _displayTimestamp( void );
 
-	int				_accountIndex;
-	int				_amount;
-	int				_nbDeposits;
-	int				_nbWithdrawals;
+    // Variables para almacenar información sobre una cuenta individual
+    int _accountIndex; // Índice de la cuenta
+    int _amount; // Cantidad de dinero en la cuenta
+    int _nbDeposits; // Número de depósitos realizados en la cuenta
+    int _nbWithdrawals; // Número de retiros realizados de la cuenta
 
-	Account( void );
+    // Constructor privado sin argumentos
+    Account( void );
 
 };
-
-
 
 // ************************************************************************** //
 // vim: set ts=4 sw=4 tw=80 noexpandtab:                                      //

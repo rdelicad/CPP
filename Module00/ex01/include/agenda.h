@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 18:45:53 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/19 18:45:56 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:48:03 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ typedef struct s_data
 }				t_data;
 
 // main
-void	initData(t_data *data);
+void		initData(t_data *data);
 std::string initMenu();
 std::string typeOption(t_data *d);
-void	clearConsole(void);
+void		clearConsole(void);
 
 // options
-void	addContact(t_data *d);
-void	searchContact(t_data *d);
+void		addContact(t_data *d);
+void		searchContact(t_data *d);
 
 #endif

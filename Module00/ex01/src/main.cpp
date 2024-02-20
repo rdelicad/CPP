@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 15:39:48 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/19 18:42:15 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:27:19 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ std::string	typeOption(t_data *d)
 		searchContact(d);
 		d->agenda->getContact();
 		std::cout << std::endl;
-		std::cout << "Press [Enter] to continue!!" << std::endl;
+		if (!std::cin.eof())
+			std::cout << "Press [Enter] to continue!!" << std::endl;
 		std::cin.get();
 		d->option = "";
 	}

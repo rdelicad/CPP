@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:07:00 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/19 18:47:31 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:23:41 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,28 @@ void PhoneBook::getContact()
 	int			id;
 	std::string input;
 
+	id = 0;
 	std::cout << std::endl;
 	std::cout << "Select the [index] of the contact you wish to view!!" << std::endl;
 	std::cin.ignore(10000, '\n');
 	while (1)
 	{
+		if (std::cin.eof())
+			break;
 		std::getline(std::cin, input);
 		if (input.length() == 1 && input[0] >= '0' && input[0] <= '7')
 		{
 			id = input[0] - '0';
 			break;
-		} else 
+		} 
+		else
 		{
-			std::cout << "Error: ¡Entrada inválida!" << std::endl;
+			if (!std::cin.eof())
+				std::cout << "Error: ¡Entrada inválida!" << std::endl;
 		}
 	}
+	if (std::cin.eof())
+			return;
 	PersonContact[id].showContact();
 }
 
