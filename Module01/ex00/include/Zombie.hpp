@@ -6,14 +6,14 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:43:59 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/22 20:03:44 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/22 20:24:20 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
-#include "Zombie.h"
+#include <string>
 
 class Zombie
 {
@@ -24,8 +24,8 @@ class Zombie
 		Zombie( void );
 		~Zombie( void );
 		void	announce( void );
-		
-	
+		Zombie	*newZombie( std::string name );
+		void	randomChump( std::string name );
 };
 
 #endif
