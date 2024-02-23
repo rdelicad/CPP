@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.h                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 20:00:41 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/22 20:01:57 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/02/23 09:59:15 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/02/23 10:08:10 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-#define ZOMBIE_H
+#include "../include/Zombie.hpp"
 
-# include "Zombie.hpp"
-# include <string>
-# include <iostream>
+int	main( void )
+{
+	Zombie stack = Zombie ( "stack" );
+	Zombie *heap = new Zombie( "heap" );
 
-
-#endif
+	stack.announce();
+	heap->announce();
+	randomChump( "random1" );
+	randomChump( "random2" );
+	delete ( heap );
+	return (0);
+}
