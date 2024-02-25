@@ -31,7 +31,11 @@ public:
     static void displayAccountsInfos( void ); // Muestra la información de todas las cuentas
 
     // Constructor y destructor
-    Account( int initial_deposit ); // Constructor que toma un depósito inicial
+    /**
+     * se utiliza para crear una nueva cuenta con un depósito inicial. 
+     * Este es el constructor que se utilizaría normalmente para crear una nueva cuenta.
+    */
+    Account( int initial_deposit ); 
     ~Account( void ); // Destructor
 
     // Métodos para interactuar con una cuenta individual

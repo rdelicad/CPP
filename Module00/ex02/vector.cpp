@@ -8,7 +8,7 @@ int main()
 	var.push_back(3);
 	var.push_back(5);
 	var.push_back(965);
-	for (std::vector<int>::size_type i = 0; i < var.size(); i++)
+	/* for (std::vector<int>::size_type i = 0; i < var.size(); i++)
 		std::cout << var.at(i) << std::endl;
 	for (std::vector<int>::iterator it = var.begin(); it != var.end(); ++it)
     {
@@ -21,5 +21,11 @@ int main()
         ++it;
     }
 	for (std::vector<int>::reverse_iterator it = var.rbegin(); it != var.rend(); ++it)
-		std::cout << (*it) << std::endl;
+		std::cout << (*it) << std::endl; */
+	std::vector<int>::iterator i =  var.begin();
+	while (*i)
+	{
+		std::cout << *i << "\n";
+		i++;
+	}
 }
