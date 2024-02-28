@@ -6,10 +6,9 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 15:03:25 by rdelicad          #+#    #+#              #
-#    Updated: 2024/02/25 12:14:44 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/02/27 14:24:40 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -g --std=c++98 -Wpedantic -Wconversion

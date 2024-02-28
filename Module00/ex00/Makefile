@@ -1,35 +1,29 @@
-# Variables
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/27 14:23:30 by rdelicad          #+#    #+#              #
+#    Updated: 2024/02/27 14:23:54 by rdelicad         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
-
-# Nombre ejecutable
 NAME = megaphone
-
-# Archivos fuente
 SRCS = megaphone.cpp
-
-# Archivos objeto
 OBJS = $(SRCS:.cpp=.o)
-
-# Reglas por defecto
 all: $(NAME)
-
-# Regla para el ejecutable
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
-
-# Regla para los archivos objeto
 $(OBJS): %.o: %.cpp 
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Regla para limpiar los archivos generados
 clean:
 	rm -f $(OBJS) $(NAME)
-
 fclean: clean
 	rm -f $(NAME)
-
-# Regla para ejecutar el programa
 run: $(NAME)
 	./$(NAME)
 

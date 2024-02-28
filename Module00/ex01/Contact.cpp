@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 20:00:43 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/25 12:21:27 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:24:14 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	Contact::getUserData()
     while (nickNameDisplay.size() < 10)
         nickNameDisplay = " " + nickNameDisplay;
 
-	//std::cout << "|         " + std::to_string(count) + "|" + firstNameDisplay + "|" + lastNameDisplay + "|"  +  nickNameDisplay + "|" << std::endl;
     std::cout << "|         " 
           << std::to_string(count) << "|"
           << firstNameDisplay << "|"

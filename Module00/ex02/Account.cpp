@@ -1,5 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/27 14:25:04 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/02/27 14:25:07 by rdelicad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Account.hpp"
 #include <iostream>
+#include <chrono>
+#include <iomanip>
 
 int Account::_nbAccounts = 0;
 int Account::_totalAmount = 0;
@@ -8,7 +22,7 @@ int Account::_totalNbWithdrawals = 0;
 
 Account::Account( int initial_deposit )
 	: _accountIndex(_nbAccounts),
-	  _amount(_totalAmount),
+	  _amount(initial_deposit),
 	  _nbDeposits(0),
 	  _nbWithdrawals(0)
 {
@@ -81,6 +95,7 @@ bool Account::makeWithdrawal( int withdrawal )
 	}
 	else
 	{
+		Account::_displayTimestamp();
 		std::cout	<< " index:" << _accountIndex
 					<< ";p_amount:" << pAmount
 					<< ";withdrawal:refused" 
@@ -103,5 +118,8 @@ void Account::displayStatus( void ) const
 
 void	Account::_displayTimestamp( void )
 {
-
+	std::chrono::time_point<std::chrono::system_clock> now = std::chrono::system_clock::now();
+	std::time_t time_now = std::chrono::system_clock::to_time_t(now);
+	std::tm *time_struct = std::localtime(&time_now);
+	std::cout << "[" << std::put_time(time_struct, "%Y%m%d_%H%M%S") << "]";	
 }
