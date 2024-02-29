@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 09:59:15 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/23 10:08:10 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/02/23 09:41:35 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/02/28 14:51:44 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/Zombie.hpp"
+#include "Zombie.hpp"
 
-int	main( void )
+// creates an instance of Zombie on the stack
+
+void randomChump(std::string name)
 {
-	Zombie stack = Zombie ( "stack" );
-	Zombie *heap = new Zombie( "heap" );
-
-	stack.announce();
-	heap->announce();
-	randomChump( "random1" );
-	randomChump( "random2" );
-	delete ( heap );
-	return (0);
+	Zombie chump(name);
+	chump.announce();
 }

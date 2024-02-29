@@ -6,7 +6,7 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/28 16:12:54 by rdelicad          #+#    #+#              #
-#    Updated: 2024/02/28 16:12:57 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/02/29 14:07:50 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,4 +27,7 @@ clean:
 	rm -f $(OBJ) $(NAME)
 fclean: clean
 	rm -f $(NAME)
+	rm -rf obj
+	rm -rf *.dSYM
+	rm -f .DS_Store
 .PHONY: all clean fclean run

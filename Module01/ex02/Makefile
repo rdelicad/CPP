@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/28 16:12:39 by rdelicad          #+#    #+#              #
-#    Updated: 2024/02/28 16:12:41 by rdelicad         ###   ########.fr        #
+#    Created: 2024/02/28 16:12:54 by rdelicad          #+#    #+#              #
+#    Updated: 2024/02/29 14:39:26 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX =		g++
 CXXFLAGS =	-Wall -Wextra -Werror -g -std=c++98 
-NAME=		zombie
-SRC=		main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+NAME=		pointer
+SRC=		main.cpp
 OBJ=		$(addprefix obj/,$(SRC:.cpp=.o))
 all:		$(NAME)
 create_obj:
@@ -28,4 +28,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	rm -rf obj
+	rm -rf *.dSYM
+	rm -f .DS_Store
 .PHONY: all clean fclean run
