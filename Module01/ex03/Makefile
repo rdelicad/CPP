@@ -1,0 +1,33 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/28 16:12:54 by rdelicad          #+#    #+#              #
+#    Updated: 2024/03/02 11:17:31 by rdelicad         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+CXX =		g++
+CXXFLAGS =	-Wall -Wextra -Werror -g -std=c++98 
+NAME=		weapon
+SRC=		main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+OBJ=		$(addprefix obj/,$(SRC:.cpp=.o))
+all:		$(NAME)
+create_obj:
+	@mkdir -p obj
+#vpath %.cpp src
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+$(OBJ): obj/%.o: %.cpp | create_obj
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+clean:
+	rm -f $(OBJ) $(NAME)
+fclean: clean
+	rm -f $(NAME)
+	rm -rf obj
+	rm -rf *.dSYM
+	rm -f .DS_Store
+.PHONY: all clean fclean run
