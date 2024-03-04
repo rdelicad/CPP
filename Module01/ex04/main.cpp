@@ -6,13 +6,14 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 13:30:29 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/02 14:49:17 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/04 12:17:30 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cstdlib>
 
 static void	checkArgs(char **av)
 {
@@ -37,17 +38,46 @@ static void	checkArgs(char **av)
 	
 }
 
-static void	checkFile(char *file)
+static void	checkFile(std::string file)
 {
-	std::ifstream fileStream(file);
-	if (!fileStream.good())
+	std::ifstream inFile(file.c_str());
+	if (!inFile.good())
 	{
 		std::cout	<< "Este archivo no se puede leer, escribir o no existe"
 					<< std::endl;
-		fileStream.close();
+		inFile.close();
 		exit (0);
 	}
-	fileStream.close();
+	inFile.close();
+}
+
+static void	replaceFile(std::string fileName, std::string s1, std::string s2)
+{
+	std::ifstream	inFile;
+	std::ofstream	outFile;
+	std::string		newFile;
+	std::string		line;
+	size_t			pos;
+
+	inFile.open(fileName.c_str());
+	if (!inFile)
+		checkFile(fileName);
+	newFile = fileName + ".replace";
+	outFile.open(newFile.c_str());
+	if (!outFile)
+		checkFile(newFile);
+	while (std::getline(inFile, line))
+	{
+		pos = 0;
+		while ((pos = line.find(s1, pos)) != std::string::npos)
+		{
+			line = line.substr(0, pos) + s2 + line.substr(pos + s1.size());
+			pos += s2.size();
+		}
+		outFile << line << std::endl;
+	}
+	inFile.close();
+	outFile.close();
 }
 
 int	main(int ac, char **av)
@@ -55,7 +85,7 @@ int	main(int ac, char **av)
 	if (ac == 4)
 	{
 		checkArgs(av);
-		checkFile(av[1]);
+		replaceFile(av[1], av[2], av[3]);
 	}
 	else
 	{
