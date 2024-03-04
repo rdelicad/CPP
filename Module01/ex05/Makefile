@@ -6,7 +6,7 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 12:46:36 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/04 12:53:03 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/04 14:28:11 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CXXFLAGS	= -Wall -Wextra -Werror -g -std=c++98
 NAME		= harl
 SRC			= main.cpp Harl.cpp
 OBJ			= $(addprefix obj/,$(SRC:.cpp=.o))
-all:
+all: $(NAME)
 create_obj:
 	@mkdir -p obj
 $(NAME): $(OBJ)
