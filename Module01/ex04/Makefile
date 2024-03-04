@@ -6,7 +6,7 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/28 16:12:54 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/04 12:31:16 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/04 12:52:52 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,4 +31,4 @@ fclean: clean
 	rm -rf *.dSYM
 	rm -f .DS_Store
 	rm -f *.replace
-.PHONY: all clean fclean run
+.PHONY: all clean fclean 
