@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 13:02:31 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/04 14:46:45 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/04 20:46:53 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,17 @@ void	Harl::error( void )
 
 void	Harl::complain( std::string level )
 {
-	void	( Harl::*debugFunc )( void )	= &Harl::debug;
-	void	( Harl::*infoFunc )( void )		= &Harl::info;
-	void	( Harl::*warningFunc )( void )	= &Harl::warning;
-	void	( Harl::*errorFunc )( void )	= &Harl::error;
+	int		i = 0;
+	void	( Harl::*func[4] )( void ) = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+	std::string arr[4] = { "debug", "info", "warning", "error" };
 
-	switch(ft_stoi(level))
+	while (i < 4)
 	{
-		case 1:
-			(this->*debugFunc)();
+		if (level.compare(arr[i]) == 0)
+		{
+			(this->*func[i])();
 			break;
-		case 2:
-			(this->*infoFunc)();
-			break;
-		case 3:
-			(this->*warningFunc)();
-			break;
-		case 4:
-			(this->*errorFunc)();
-			break;
+		}
+		i++;
 	}
 }

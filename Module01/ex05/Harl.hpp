@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:53:46 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/04 14:34:07 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:55:24 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ class Harl
 		void	complain( std::string level );
 };
 
-int		ft_stoi( std::string str) ;
 void	ft_error( int i );
 #endif 
