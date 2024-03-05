@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 12:53:37 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/04 20:42:58 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/05 08:35:49 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	std::string	level;
 	std::string arr[4] = { "debug", "info", "warning", "error" };
 
-	if (av[1] == '\0')
+	if (av[1] == NULL)
 		ft_error(1);
 	level = av[1];
 	if (ac == 2)
