@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:46:56 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/05 09:46:28 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:04:44 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,35 +48,20 @@ void	Harl::error( void )
 
 static int	stringToInteger(const std::string& level)
 {
-	int levelInt = 0;
-    
-    if (level == "debug")
-        levelInt = 1;
-    else if (level == "info")
-        levelInt = 2;
-    else if (level == "warning")
-        levelInt = 3;
-    else if (level == "error")
-        levelInt = 4;
-	else
-		ft_error(2);
-		
-	return levelInt;
-	
-	/* // tabla hash
-    const char* levels[] = {"debug", "info", "warning", "error"};
-    const int values[] = {1, 2, 3, 4};
-    const int numLevels = sizeof(levels) / sizeof(levels[0]);
+    const char*	levels[4] = {"debug", "info", "warning", "error"};
+    const int	values[4] = {1, 2, 3, 4};
+	int			i = 0;
 
-    for (int i = 0; i < numLevels; ++i)
+   while (i < 4)
     {
         if (level == levels[i])
         {
             return values[i];
         }
+		i++;
     }
     ft_error(2);
-    return -1;  */
+    return -1; 
 }
 
 void	Harl::complain( std::string level )
@@ -104,5 +89,8 @@ void	Harl::complain( std::string level )
 			std::cout << "[error]" << std::endl;
 			(this->*errorFunc)();
 			// fall through
+			break;
+		default:
+			ft_error(2);
 	}
 }
