@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:46:56 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/05 10:04:44 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/05 10:12:54 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ static int	stringToInteger(const std::string& level)
 
 void	Harl::complain( std::string level )
 {
-	void	( Harl::*debugFunc ) ( void ) = &Harl::debug;
-	void	( Harl::*infoFunc ) ( void ) = &Harl::info;
+	void	( Harl::*debugFunc ) ( void )	= &Harl::debug;
+	void	( Harl::*infoFunc ) ( void )	= &Harl::info;
 	void	( Harl::*warningFunc ) ( void ) = &Harl::warning;
-	void	( Harl::*errorFunc ) ( void ) = &Harl::error;
+	void	( Harl::*errorFunc ) ( void )	= &Harl::error;
 
 	switch(stringToInteger(level))
 	{
