@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 08:46:56 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/05 09:35:46 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/05 09:46:28 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,21 @@ static int	stringToInteger(const std::string& level)
 		ft_error(2);
 		
 	return levelInt;
+	
+	/* // tabla hash
+    const char* levels[] = {"debug", "info", "warning", "error"};
+    const int values[] = {1, 2, 3, 4};
+    const int numLevels = sizeof(levels) / sizeof(levels[0]);
+
+    for (int i = 0; i < numLevels; ++i)
+    {
+        if (level == levels[i])
+        {
+            return values[i];
+        }
+    }
+    ft_error(2);
+    return -1;  */
 }
 
 void	Harl::complain( std::string level )
