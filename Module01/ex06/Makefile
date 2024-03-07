@@ -6,11 +6,11 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 08:39:08 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/05 08:53:03 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/07 15:09:08 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			= g++
+CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -g
 NAME		=  harlFilter
 SRC			= main.cpp Harl.cpp

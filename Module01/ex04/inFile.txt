@@ -1,4 +1,0 @@
-Hola, mi nombre es Juan.
-Me gusta programar en C++.
-C++ es un lenguaje de programación muy potente.
-

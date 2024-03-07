@@ -6,11 +6,11 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/28 16:12:39 by rdelicad          #+#    #+#              #
-#    Updated: 2024/02/28 16:12:41 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/07 15:08:29 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX =		g++
+CXX =		c++
 CXXFLAGS =	-Wall -Wextra -Werror -g -std=c++98 
 NAME=		zombie
 SRC=		main.cpp Zombie.cpp newZombie.cpp randomChump.cpp

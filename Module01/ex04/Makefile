@@ -6,11 +6,11 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/28 16:12:54 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/04 12:52:52 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/07 15:08:56 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX =		g++
+CXX =		c++
 CXXFLAGS =	-Wall -Wextra -Werror -g -std=c++98 
 NAME=		replace
 SRC=		main.cpp
