@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:56:15 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/07 16:48:45 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/07 22:18:57 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,14 @@
 class Fixed
 {
 	private:
-		int					_nbr;
-		static const int	_point;
+		int					_fixedPointValue;
+		static const int	_fractionalBits = 8;
 	public:
-		// Constructores
 		Fixed( void );
 		Fixed( const Fixed& copy );
-		
-		// Operators
 		Fixed& operator = ( const Fixed& other );
-
-		// Destructor
 		~Fixed( void );
-
-		// Methods
+		
 		int	getRawBits( void ) const;
 		void setRawBits( int const raw );
 };

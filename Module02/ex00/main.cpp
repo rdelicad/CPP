@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 19:55:49 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/07 16:47:25 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/07 22:53:13 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main( void )
 	Fixed	c;
 
 	c = b;
+	//c.setRawBits(234);
 
 	std::cout << a.getRawBits() << std::endl;
 	std::cout << b.getRawBits() << std::endl;
