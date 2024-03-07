@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 20:49:47 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/05 21:44:21 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/07 16:48:39 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ Fixed::Fixed ( void ) : _nbr(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
-Fixed::Fixed ( const Fixed& copy ) : _nbr(copy._nbr)
+
+Fixed::Fixed ( const Fixed& copy )
 {
+	_nbr = copy._nbr;
 	std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -28,7 +30,7 @@ Fixed& Fixed::operator=( const Fixed& other )
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		_nbr = other._nbr;
+		_nbr = other.getRawBits();
 	}
 	
 	return *this;
