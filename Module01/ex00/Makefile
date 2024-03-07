@@ -6,7 +6,7 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/28 16:12:39 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/07 15:08:29 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/07 18:06:59 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,9 @@ $(NAME): $(OBJ)
 $(OBJ): obj/%.o: %.cpp | create_obj
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 clean:
-	rm -f $(OBJ) $(NAME)
+	rm -rf $(OBJ)
 fclean: clean
 	rm -f $(NAME)
 	rm -rf obj
+re: fclean all
 .PHONY: all clean fclean run

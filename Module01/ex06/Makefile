@@ -6,7 +6,7 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 08:39:08 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/07 15:09:08 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/07 18:04:22 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,11 @@ $(NAME) : $(OBJ)
 $(OBJ): obj/%.o: %.cpp | create_dir
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 clean:
-	rm -r $(NAME) $(OBJ)
+	rm -rf $(OBJ)
 fclean: clean
 	rm -f $(NAME)
 	rm -rf obj
 	rm -rf *.dSYM
 	rm -f .DS_Store
+re: fclean all
 PHONY: all clean fclean
