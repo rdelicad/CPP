@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 19:21:34 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/07 19:29:49 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:23:19 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@
 class Fixed
 {
 	private:
-		int					_nbr;
-		static const int	_point;
+		int					_fixedPointValue;
+		static const int	_fractionalBits = 8;
 	public:
 		Fixed( void );
+		Fixed( const int nbr );
 		Fixed( const Fixed& copy );
 		Fixed& operator = ( const Fixed& other );
 		~Fixed( void );
+		
 		float toFloat( void ) const;
 		int toInt( void ) const;
 };
