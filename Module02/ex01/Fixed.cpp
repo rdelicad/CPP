@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 12:03:24 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/09 12:48:02 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/11 19:32:45 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ Fixed::Fixed( const int intNbr )
 Fixed::Fixed( const float floatNbr )
 {
 	std::cout << "Float constructor called" << std::endl;
-	_fixedPointValue = static_cast<float>(floatNbr * (1 << _fractionalBits));
+	_fixedPointValue = static_cast<float>
+		(roundf(floatNbr * (1 << _fractionalBits)));
 }
 
-Fixed::Fixed( const Fixed& copy )
+Fixed::Fixed( const Fixed &copy )
 {
 	std::cout << "Copy constructor called" << std::endl;
-	_fixedPointValue = copy._fixedPointValue;
+	*this = copy;
 }
 
-Fixed& Fixed::operator = ( const Fixed& other )
+Fixed &Fixed::operator = ( const Fixed &other )
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
@@ -69,8 +70,8 @@ float Fixed::toFloat() const
 	return static_cast<float>(this->getRawBits()) / (1 << _fractionalBits);
 }
 
-std::ostream& operator << ( std::ostream& op, Fixed const & i )
+std::ostream &operator << ( std::ostream &outPutStream, Fixed const &fixedObj )
 {
-	op << i.toFloat();
-	return op;
+	outPutStream << fixedObj.toFloat();
+	return outPutStream;
 }
