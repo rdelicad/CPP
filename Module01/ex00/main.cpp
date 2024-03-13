@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 09:59:15 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/02/28 14:52:01 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/13 19:19:49 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main( void )
 {
 	Zombie stack = Zombie ( "stack" );
-	Zombie *heap = new Zombie( "heap" );
+	Zombie *heap = newZombie( "heap" );
 
 	stack.announce();
 	heap->announce();
