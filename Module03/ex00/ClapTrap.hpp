@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:30:11 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/15 07:45:03 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:56:12 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,18 @@
 class ClapTrap
 {
 	private:
-		ClapTrap( std::string _Name );
-		int _Hit = 10;
-		int _Energy = 10;
-		int _Attack = 0;
+		std::string _name;
+		int _hit;
+		int _energy;
+		int _attack;
 	public:  
-		ClapTrap();
+		ClapTrap( std::string );
+		ClapTrap( const ClapTrap & );
+		ClapTrap &operator = ( const ClapTrap & );
 		~ClapTrap();
-		void	attack( const std::string& target );
-		void	takeDamage( unsigned int amount );
-		void	beRepaired( unsigned int amount );
+		void	attack( const std::string & );
+		void	takeDamage( unsigned int );
+		void	beRepaired( unsigned int );
 };
 
 #endif
