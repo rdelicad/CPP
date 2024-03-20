@@ -6,14 +6,14 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:30:22 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/20 20:05:13 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/20 21:41:16 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap( std::string name )
-: _name(name), _hit(10), _energy(10), _attack(0)
+: _name(name), _hit(100), _energy(50), _attack(20)
 {
 	std::cout	<< "Default constructor called for "
 				<< _name
@@ -71,28 +71,21 @@ void ClapTrap::attack( const std::string& target )
 
 void ClapTrap::takeDamage( unsigned int amount )
 {
-	if (_hit > 0)
+	_hit -= amount;
+	if (_hit <= 0)
 	{
-		if ((unsigned)_hit > amount)
-			_hit -= amount;
-		else
-		{
-			std::cout << _name << " is dead" << std::endl;
-			exit (0);
-		}
-		std::cout	<< _name
-					<< " received "
-					<< amount
-					<< " hit points -> "
-					<< "energy= " << _energy
-					<< " hit= " << _hit
-					<< std::endl;
+		std::cout << _name << " is dead" << std::endl;
 	}
 	else
-		std::cout	<< "ClapTrap "
-					<< _name	
-					<< " no hit!!!"
-					<< std::endl;
+	{
+		std::cout	<< _name
+				<< " received "
+				<< amount
+				<< " hit points -> "
+				<< "energy= " << _energy
+				<< " hit= " << _hit
+				<< std::endl;
+	}
 }
 
 void ClapTrap::beRepaired( unsigned int amount )

@@ -6,28 +6,27 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 07:23:16 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/15 07:29:35 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/20 21:46:25 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXX			= c++
 CXXFLAGS	= -Wall -Wextra -Werror -g -std=c++98
 NAME		= trap
-SRCS		= main.cpp ClapTrap.hpp ClapTrap.cpp
-OBJS		= $(addprefix obj/,$(SRCS:.cpp=.o))
+SRC			= main.cpp ClapTrap.cpp ScavTrap.cpp
+OBJ			= $(addprefix obj/,$(SRC:.cpp=.o))
 all: $(NAME)
 create_obj:
 	@mkdir -p obj
-$(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
-$(OBJS): obj/%.o: %.cpp | create_obj
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+$(OBJ): obj/%.o: %.cpp | create_obj
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 clean:
-	rm -rf $(OBJ)
+	rm -f $(OBJ)
 fclean: clean
 	rm -f $(NAME)
-	m -rf obj
+	rm -rf obj
 	rm -rf *.dSYM
 	rm -f .DS_Store
 re: fclean all
-.PHONY: all clean fclean re
+.PHONY: all clean fclean

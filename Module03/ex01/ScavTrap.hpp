@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 18:12:22 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/20 21:40:20 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/03/20 20:19:56 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/03/20 21:00:31 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
+
 #include "ClapTrap.hpp"
 
-int main()
+class ScavTrap : public ClapTrap
 {
-	ClapTrap	a("Jose");
-	
-	a.takeDamage(9);
-	//a.beRepaired(10);
-	a.attack("JOSE");
-	a.takeDamage(1);
-	
-	return 0;
-}
+	public:
+		ScavTrap( std::string );
+		/* ScavTrap( const ScavTrap & );
+		ScavTrap &operator = ( const ScavTrap & );
+		~ScavTrap(); */
+		void	guardGate();
+};
+
+#endif

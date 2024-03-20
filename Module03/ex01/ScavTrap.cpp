@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/18 18:12:22 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/20 21:40:20 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/03/20 20:28:11 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/03/20 21:03:54 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main()
+ScavTrap::ScavTrap( std::string name )
+: ClapTrap(name)
+{}
+
+void	ScavTrap::guardGate()
 {
-	ClapTrap	a("Jose");
-	
-	a.takeDamage(9);
-	//a.beRepaired(10);
-	a.attack("JOSE");
-	a.takeDamage(1);
-	
-	return 0;
+	std::cout	<< "Modo guard Gate" << std::endl;
 }
