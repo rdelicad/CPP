@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:30:22 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/21 16:23:01 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:32:59 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ClapTrap::ClapTrap( std::string name )
 }
 ClapTrap::ClapTrap( const ClapTrap &copy )
 {
-	std::cout	<< "Copy constructor called for "
+	std::cout	<< "Copy constructor called"
 				<< _name
 				<< std::endl;
 	*this = copy;
@@ -29,11 +29,16 @@ ClapTrap::ClapTrap( const ClapTrap &copy )
 
 ClapTrap &ClapTrap::operator=( const ClapTrap &other )
 {
+	if (this != &other)
+	{
+		_name = other._name;
+		_hit = other._hit;
+		_energy = other._energy;
+		_attack = other._attack;
+	}
 	std::cout	<< "Operator called for "
 				<< _name
 				<< std::endl;
-	if (this != &other)
-		_name = other._name;
 
 	return *this;
 }
