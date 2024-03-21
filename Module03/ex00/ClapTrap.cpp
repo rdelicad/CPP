@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:30:22 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/20 20:05:13 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/21 16:23:01 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ ClapTrap::~ClapTrap()
 void ClapTrap::attack( const std::string& target )
 {
 	
-	if (_energy)
+	if (_energy > 0)
 	{
 		_energy -= 1;
 		std::cout	<< "ClapTrap "
@@ -71,28 +71,21 @@ void ClapTrap::attack( const std::string& target )
 
 void ClapTrap::takeDamage( unsigned int amount )
 {
-	if (_hit > 0)
+	if ((unsigned)_hit > amount)
 	{
-		if ((unsigned)_hit > amount)
-			_hit -= amount;
-		else
-		{
-			std::cout << _name << " is dead" << std::endl;
-			exit (0);
-		}
+		_hit -= amount;
 		std::cout	<< _name
-					<< " received "
-					<< amount
-					<< " hit points -> "
-					<< "energy= " << _energy
-					<< " hit= " << _hit
-					<< std::endl;
+				<< " received "
+				<< amount
+				<< " hit points -> "
+				<< "energy= " << _energy
+				<< " hit= " << _hit
+				<< std::endl;
 	}
 	else
-		std::cout	<< "ClapTrap "
-					<< _name	
-					<< " no hit!!!"
-					<< std::endl;
+	{
+		std::cout << _name << " is dead" << std::endl;
+	}
 }
 
 void ClapTrap::beRepaired( unsigned int amount )
