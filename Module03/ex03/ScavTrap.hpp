@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 20:44:04 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/21 19:55:58 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/03/20 20:19:56 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/03/21 21:11:12 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#ifndef SCAVTRAP_HPP
+#define SCAVTRAP_HPP
 
-int	main()
+#include "ClapTrap.hpp"
+
+class ScavTrap : virtual public ClapTrap
 {
-	ScavTrap	a("Jose");
-	/* ClapTrap	b("pepe");
-	ClapTrap	c(a);
-	ScavTrap	d(a);
-	c = a;
-	d = a; */
-	
-	std::cout << "----- ScavTrap -----" << std::endl;
-	a.attack("Jose");
-	a.beRepaired(100);
-	a.takeDamage(100);
-	a.guardGate();
-	/* std::cout << "----- ClapTrap -----" << std::endl;
-	b.attack("Pepe");
-	b.beRepaired(100);
-	b.takeDamage(100); */
-	
-	return 0;
-}
+	public:
+		ScavTrap( std::string );
+		ScavTrap( const ScavTrap & );
+		~ScavTrap();
+		
+		ScavTrap &operator = ( const ScavTrap & );
+
+		void	attack( const std::string & );
+		void	guardGate();
+};
+
+#endif

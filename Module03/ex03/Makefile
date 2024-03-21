@@ -6,13 +6,13 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 07:23:16 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/21 20:51:01 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/21 20:50:46 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CXXFLAGS	= -Wall -Wextra -Werror -g -std=c++98 -Wshadow
+CXXFLAGS	= -Wall -Wextra -Werror -g -std=c++98 -Wshadow #-Wno-shadow
 NAME		= trap
-SRC			= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC			= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ			= $(addprefix obj/,$(SRC:.cpp=.o))
 all: $(NAME)
 create_obj:

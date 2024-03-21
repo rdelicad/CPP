@@ -6,27 +6,36 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 20:44:04 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/21 19:55:58 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/21 20:34:03 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main()
 {
-	ScavTrap	a("Jose");
-	/* ClapTrap	b("pepe");
+	FragTrap	r("Jose");	
+	/* ScavTrap	a("Jose");
+	ClapTrap	b("pepe");
 	ClapTrap	c(a);
 	ScavTrap	d(a);
+	FragTrap	q(r);
 	c = a;
-	d = a; */
+	d = a;
+	q = r; */
 	
-	std::cout << "----- ScavTrap -----" << std::endl;
+	std::cout << "----- FragTrap -----" << std::endl;
+	r.attack("Jose");
+	r.beRepaired(100);
+	r.takeDamage(100);
+	r.highFivesGuys();
+	/* std::cout << "----- ScavTrap -----" << std::endl;
 	a.attack("Jose");
 	a.beRepaired(100);
 	a.takeDamage(100);
-	a.guardGate();
+	a.guardGate(); */
 	/* std::cout << "----- ClapTrap -----" << std::endl;
 	b.attack("Pepe");
 	b.beRepaired(100);

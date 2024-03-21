@@ -6,14 +6,14 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 07:30:22 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/03/21 20:06:53 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/03/21 20:29:01 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap( std::string name )
-: _name(name), _hit(10), _energy(10), _attack(0)
+: _name(name), _hit(100), _energy(100), _attack(30)
 {
 	std::cout	<< "ClapTrap Default constructor called for "
 				<< _name
@@ -21,7 +21,7 @@ ClapTrap::ClapTrap( std::string name )
 }
 ClapTrap::ClapTrap( const ClapTrap &copy )
 {
-	std::cout	<< "ClapTrap Copy constructor called"
+	std::cout	<< "ClapTrap Copy constructor called for "
 				<< _name
 				<< std::endl;
 	*this = copy;
@@ -52,7 +52,6 @@ ClapTrap::~ClapTrap()
 
 void ClapTrap::attack( const std::string& target )
 {
-	
 	if (_energy > 0)
 	{
 		_energy -= 1;
@@ -99,7 +98,7 @@ void ClapTrap::takeDamage( unsigned int amount )
 
 void ClapTrap::beRepaired( unsigned int amount )
 {
-	if (_energy > 0 && _hit <= 10)
+	if (_energy > 0 && _hit <= 100)
 	{
 		_energy -= 1;
 		_hit += amount;
