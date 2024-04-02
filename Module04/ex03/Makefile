@@ -6,24 +6,26 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/26 17:49:10 by rdelicad          #+#    #+#              #
-#    Updated: 2024/03/26 17:56:55 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/03/26 20:50:31 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX		= c++
-CXXFLAG	= -Wall -Wextra -Werror -std=c++98 -Wshadow
+CXXFLAG	= -Wall -Wextra -Werror -std=c++98 -Wshadow -Iincludes
 NAME	= animal
-SRC		= main.cpp Animal.hpp Animal.cpp
-OBJ		= $(addprefix obj/,$(SRC:.cpp = .o))
+SRC		= main.cpp Animal.cpp Dog.cpp Cat.cpp \
+		WrongAnimal.cpp WrongCat.cpp
+SRCS	= $(addprefix src/, $(SRC))
+OBJS	= $(addprefix obj/, $(SRC:.cpp=.o))
 all: $(NAME)
 create_obj:
 	@mkdir -p obj 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAG) -o $@ $^
-$(OBJ): obj/%.o: %.cpp | create_obj
+$(OBJS): obj/%.o: src/%.cpp | create_obj
 	$(CXX) $(CXXFLAG) -c $< -o $@
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 fclean: clean
 	rm -f $(NAME)
 	rm -rf obj
