@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/26 17:58:02 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/05 16:40:53 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/04/05 16:59:41 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/04/05 17:37:40 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CURE_HPP
+#define CURE_HPP
 
-#include <iostream>
-#include <string>
+#include "Headers.h"
 
-class Animal
+class Cure : public AMateria
 {
-	protected:  
-		std::string _type;
-	public:
-		Animal();
-		Animal(const Animal &);
-		virtual ~Animal();
-		
-		Animal &operator = (const Animal &);
+	public:  
+		Cure();
+		Cure(const Cure &);
+		~Cure();
 
-		virtual void makeSound() const = 0;
-		
-		std::string getType() const;
+		Cure &operator = (const Cure &);
+
+		std::string const & getType() const;
+		Cure *clone() const;
+		void use(ICharacter& target);
 };
 
 #endif
