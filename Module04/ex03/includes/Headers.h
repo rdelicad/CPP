@@ -5,22 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 17:21:02 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/05 17:37:28 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/04/06 10:51:08 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/04/14 11:33:55 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADERS_H
-#define HEADERS_H
+#ifndef HEADERS_HPP
+#define HEADERS_HPP
 
 #include <string>
 #include <iostream>
+#include <cstdio>
 
-#include "ICharacter.hpp"
 #include "AMateria.hpp"
-#include "Ice.hpp"
+#include "ICharacter.hpp"
 #include "Cure.hpp"
-#include "IMateriaSource"
-#include "MateriaSource"
+#include "Ice.hpp"
+#include "Character.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 17:28:54 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/06 10:11:37 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/14 12:49:44 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 class MateriaSource : public IMateriaSource
 {
 	private:
-		std::string _type;
+		AMateria *_materias[4];
+		int _index;
 	public:  
 		MateriaSource();
 		MateriaSource(const MateriaSource &);

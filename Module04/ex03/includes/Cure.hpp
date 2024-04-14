@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:59:41 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/05 17:37:40 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/14 10:44:17 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class Cure : public AMateria
 
 		Cure &operator = (const Cure &);
 
-		std::string const & getType() const;
+		std::string const &getType() const;
 		Cure *clone() const;
-		void use(ICharacter& target);
+		void use(ICharacter &);
 };
 
 #endif

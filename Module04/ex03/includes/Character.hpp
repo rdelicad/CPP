@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ice.hpp                                            :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/05 16:59:26 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/14 10:44:32 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/04/06 10:58:59 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/04/14 12:45:09 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICE_HPP
-#define ICE_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include "Headers.h"
 
-class Ice : public AMateria
+class Character : public ICharacter
 {
+	private:  
+		AMateria *_inventory[4];
+		std::string _name;
+		int _currPos;
 	public:  
-		Ice();
-		Ice(const Ice &);
-		~Ice();
+		Character(std::string);
+		Character(const Character &);
+		~Character();
 
-		Ice &operator = (const Ice &);
-
-		Ice *clone() const;
-		std::string const &getType() const;
-		void use(ICharacter &);
+		Character &operator = (const Character &);
+		
+		std::string const &getName() const;
+		void equip(AMateria *);
+		void unequip(int);
+		void use(int, ICharacter &);	
 };
 
 #endif
