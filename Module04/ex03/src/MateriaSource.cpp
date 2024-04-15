@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:11:01 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/14 12:53:04 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:44:26 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 {
 	for (int i = 0; i < _index; i++)  
 	{
+		printf("_index: %d\n", _index);
 		if (_materias[i]->getType() == type)
 			return _materias[i]->clone();
 	}

@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:19:56 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/14 13:00:58 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:41:16 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int main()
     // Crear la fuente de materia
     std::cout << "\n******* Creando la fuente de materia *****\n";
     IMateriaSource *src = new MateriaSource();
+   
+    
 
     // Aprender nuevas materias
     std::cout << "\n***** Aprendiendo nuevas materias *****\n";
@@ -33,11 +35,11 @@ int main()
     AMateria *tmp;
 
     // Equipar materias al personaje 'me'
-   /*  std::cout << "\n**** crear materia 'ice' ****\n";
+    std::cout << "\n**** crear materia 'ice' ****\n";
     tmp = src->createMateria("ice");
     std::cout << "\n**** Equipando materia 'ice' ****\n";
-    me->equip(tmp); */
-    std::cout << "\n**** crear materia 'cure' ****\n";
+    me->equip(tmp);
+   /*  std::cout << "\n**** crear materia 'cure' ****\n";
     tmp = src->createMateria("cure");
     std::cout << "\n**** Equipando materia 'cure' ****\n";
     me->equip(tmp);
@@ -54,7 +56,7 @@ int main()
     // Eliminar los personajes y la fuente de materia
     std::cout << "\n**** Eliminando los personajes y la fuente de materia ****\n";
     delete bob;
-    delete me; 
+    delete me;  */
     delete src;
 
     return 0;

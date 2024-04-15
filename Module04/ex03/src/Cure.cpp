@@ -6,13 +6,13 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:44:42 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/12 14:45:16 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/15 07:55:55 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Headers.h"
 
-Cure::Cure() : AMateria("Cure")
+Cure::Cure() : AMateria("cure")
 {
 	std::cout	<< "[Cure] Default constructor called"
 				<< std::endl;
