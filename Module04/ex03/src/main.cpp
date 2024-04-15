@@ -6,58 +6,92 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 16:19:56 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/15 15:41:16 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:26:14 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Headers.h"
 
-
-int main()
+int	main(void)
 {
-    // Crear la fuente de materia
-    std::cout << "\n******* Creando la fuente de materia *****\n";
-    IMateriaSource *src = new MateriaSource();
-   
-    
+	std::cout << "\n**** Creando la fuente de materia ****\n";
+	std::cout << "--------------------------------------------\n";
+	IMateriaSource *src = new MateriaSource();
 
-    // Aprender nuevas materias
-    std::cout << "\n***** Aprendiendo nuevas materias *****\n";
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
+	std::cout << "\n***** Aprendiendo nuevas materias *****\n";
+	std::cout << "--------------------------------------------\n";
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Cure());
+	src->learnMateria(new Ice());
 
-    // Crear un nuevo personaje llamado 'me'
-    std::cout << "\n***** Creando un nuevo personaje llamado 'me' *****\n";
-    ICharacter *me = new Character("me");
+	std::cout << "\n***** Creando un nuevo personaje llamado 'me' *****\n";
+	std::cout << "--------------------------------------------------------\n";
+	ICharacter *me = new Character("me");
 
-    // Crear un objeto temporal de AMateria
-    std::cout << "\n**** Creando un objeto temporal de AMateria ****\n";
-    AMateria *tmp;
+	std::cout << "\n**** Probar copia profunda ****\n";
+	std::cout << "--------------------------------------------\n";
+	//ICharacter *juan = new Character("Juan");
+	Character *juan = new Character("Juan");
+	Character copyJuan = Character(*juan); // Aquí '*juan' es una referencia a Character
+	
+	std::cout << "\nProbar copia\n";
+	std::cout << "--------------------------------------------\n";
+	juan->unequip(0);
+	juan->equip(src->createMateria("ice"));
 
-    // Equipar materias al personaje 'me'
-    std::cout << "\n**** crear materia 'ice' ****\n";
-    tmp = src->createMateria("ice");
-    std::cout << "\n**** Equipando materia 'ice' ****\n";
-    me->equip(tmp);
-   /*  std::cout << "\n**** crear materia 'cure' ****\n";
-    tmp = src->createMateria("cure");
-    std::cout << "\n**** Equipando materia 'cure' ****\n";
-    me->equip(tmp);
+	
+	std::cout << "\n**** Creando un objeto temporal de AMateria ****\n";
+	std::cout << "-----------------------------------------------------\n";
+	AMateria *tmp;
 
-    // Crear un nuevo personaje llamado 'bob'
-    std::cout << "\n***** Creando un nuevo personaje llamado 'bob' *****\n";
-    ICharacter *bob = new Character("bob");
+	
+	std::cout << "\n**** crear materia 'ice' ****\n";
+	std::cout << "--------------------------------------------\n";
+	tmp = src->createMateria("ice");
+	tmp = src->createMateria("ice");
+	std::cout << "\n**** Equipando materia 'ice' ****\n";
+	std::cout << "--------------------------------------------\n";
+	me->equip(tmp);
+	me->equip(tmp);
+	std::cout << "\n**** crear materia 'cure' ****\n";
+	std::cout << "--------------------------------------------\n";
+	tmp = src->createMateria("cure");
+	tmp = src->createMateria("cure");
+	tmp = src->createMateria("cure");
+	std::cout << "\n**** Equipando materia 'cure' ****\n";
+	std::cout << "--------------------------------------------\n";
+	me->equip(tmp);
+	me->equip(tmp);
+	me->equip(tmp);
+	me->equip(tmp);
+	me->equip(tmp);
+	me->equip(tmp);
 
-    // 'me' ataca a 'bob' con las materias equipadas
-    std::cout << "\n***** 'me' ataca a 'bob' con las materias equipadas ****\n";
-    me->use(0, *bob);
-    me->use(1, *bob);
+	
+	std::cout << "\n***** Creando un nuevo personaje llamado 'bob' *****\n";
+	std::cout << "-------------------------------------------------------\n";
+	ICharacter *bob = new Character("bob");
 
-    // Eliminar los personajes y la fuente de materia
-    std::cout << "\n**** Eliminando los personajes y la fuente de materia ****\n";
-    delete bob;
-    delete me;  */
-    delete src;
+	
+	std::cout << "\n***** 'me' ataca a 'bob' con Ice ****\n";
+	std::cout << "--------------------------------------------\n";
+	me->use(0, *bob);
+	me->use(0, *bob);
+	std::cout << "\n***** 'me' cura a 'bob' con Cure ****\n";
+	std::cout << "--------------------------------------------\n";
+	me->use(1, *bob);
+	me->use(1, *bob);
+	me->use(1, *bob);
 
-    return 0;
+	
+	std::cout << "\n**** Eliminando los personajes y la fuente de materia ****\n";
+	std::cout << "--------------------------------------------------------------\n";
+	delete me;
+	delete src;
+	delete bob;
+
+	return (0);
 }

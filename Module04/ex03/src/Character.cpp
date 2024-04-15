@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:51:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/14 12:46:25 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:51:09 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ void Character::equip(AMateria *m)
 	if (_currPos < 4)
 	{
 		_inventory[_currPos] = m;
+		std::cout	<< "materia ["
+					<< m->getType()
+					<< "] equipada" << std::endl;
 		_currPos++;
 	}
 }
@@ -90,6 +93,7 @@ void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
 		_inventory[idx] = NULL;
+	std::cout << "quitando materia equipada" << std::endl;
 }
 
 // usamos materia del inventario

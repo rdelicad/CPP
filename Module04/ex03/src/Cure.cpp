@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:44:42 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/15 07:55:55 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:46:09 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ std::string const &Cure::getType() const
 
 void Cure::use(ICharacter &target)
 {
-	std::cout	<< "[Cure] * shoots an cure bolt at " << target.getName()
+	std::cout	<< "[Cure] * heals bob's wounds " << target.getName()
 				<< " *"
 				<< std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 10:10:09 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/15 16:02:43 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/15 17:45:44 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ std::string const &AMateria::getType() const
 {
 	return this->_type;
 }
-
-virtual AMateria *clone() const
 
 void AMateria::use(ICharacter &target)
 {
