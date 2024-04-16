@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 14:51:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/15 18:51:09 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:46:18 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ Character::~Character()
 	for (int i = 0; i < 4; i++)  
 		delete _inventory[i];
 }
+
 // 43. evitamos la autoasignacion
 // 46. liberamos la memoria de elementos existentes
 // 51. copiamos el nombre

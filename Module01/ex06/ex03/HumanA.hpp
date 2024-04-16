@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/06 10:58:59 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/16 17:45:59 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/03/02 09:11:52 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/03/02 10:38:09 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER_HPP
-#define CHARACTER_HPP
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
 
-#include "Headers.h"
+#include "Weapon.hpp"
 
-class Character : public ICharacter
+class HumanA
 {
-	private:  
-		AMateria *_inventory[4];
+	private:
 		std::string _name;
-		int _currPos;
-	public:  
-		Character(std::string);
-		Character(const Character &);
-		~Character();
-
-		Character &operator = (const Character &);
-		
-		std::string const &getName() const;
-		void equip(AMateria *);
-		void unequip(int);
-		void use(int, ICharacter &);	
+		Weapon& _weapon;
+	public:
+		HumanA( std::string name, Weapon& weapon );
+		~HumanA( void );
+		void attack( void );
 };
 
 #endif

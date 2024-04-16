@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 19:08:31 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/04 15:25:43 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/15 20:07:58 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ static void testingCopyConstructors()
 	std::cout << "-------------------------------" << std::endl;
 	std::cout << std::endl;
 	Dog dog1;
+	std::cout << std::endl;
+	std::cout << "-----------------------\n";
 	Dog dog2(dog1);
 	
 	std::cout << std::endl;
