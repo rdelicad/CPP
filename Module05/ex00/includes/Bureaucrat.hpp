@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:40:54 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/18 17:57:27 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/19 17:39:11 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,35 @@
 #include <iostream>
 #include <string>
 
-class Bureaucrat : public std::exception
+class Bureaucrat
 {
-	private:
-		const std::string _name;
-		int _grade;
+    private:
+        const std::string _name;
+        int _grade;
+        Bureaucrat &operator=(const Bureaucrat &);
 
-	public:
-		Bureaucrat();
-		~Bureaucrat() throw();
-		Bureaucrat(const Bureaucrat &);
-
-		Bureaucrat &operator=(const Bureaucrat &);
-				
-		class GradeTooHighException
-		{
-			public:
-			virtual const char *what() const throw();
-		};
-		
-		class GradeTooLowException
-		{
-			public:
-			virtual const char *what() const throw();
-		};
-		
-		void getName() const;
-		int getGrade() const;
-		void incrementGrade();
-		void decrementGrade();
+    public:
+        Bureaucrat();
+        ~Bureaucrat();
+        Bureaucrat(const std::string &, int);
+        Bureaucrat(const Bureaucrat &);
+                
+        class GradeTooHighException : public std::exception
+        {
+            public:
+            virtual const char *what() const throw();
+        };
+        
+        class GradeTooLowException : public std::exception
+        {
+            public:
+            virtual const char *what() const throw();
+        };
+        
+        std::string getName() const;
+        int getGrade() const;
+        void incrementGrade(int);
+        void decrementGrade(int);
 };
 
 std::ostream &operator<<(std::ostream &, Bureaucrat const &);
