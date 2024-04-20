@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 16:06:37 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/19 17:43:37 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/20 11:58:09 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,17 @@ int main()
 	try
 	{
 		std::cout << std::endl;
-		std::cout << "\033[1;32m------- Bureaucrat original -------\033[0m" << std::endl;
+		std::cout << "\033[1;34m------- Bureaucrat original -------\033[0m" << std::endl;
 		Bureaucrat b1("Pepe", 1);
-		
-		std::cout << std::endl;
-		std::cout << "\033[1;34m------- Operator(<<) -------\033[0m" << std::endl;
 		std::cout << b1 << std::endl;
 		//b1.decrementGrade(12);
-		//b1.incrementGrade(150);
-		//b1.incrementGrade(24);
+		b1.incrementGrade(150);
+		b1.incrementGrade(24);
 		
 
 		std::cout << std::endl;
-		std::cout << "\033[1;32m------- test copy -------\033[0m" << std::endl;
+		std::cout << "\033[1;34m------- test copy -------\033[0m" << std::endl;
 		Bureaucrat b2(b1);
-		std::cout << std::endl;
-		std::cout << "\033[1;34m------- Operator(<<) -------\033[0m" << std::endl;
 		std::cout << b2 << std::endl;
 		//b2.decrementGrade(25);
 		//b2.incrementGrade(175);

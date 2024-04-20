@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:40:54 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/19 17:39:11 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/20 11:53:08 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class Bureaucrat
         Bureaucrat &operator=(const Bureaucrat &);
 
     public:
-        Bureaucrat();
         ~Bureaucrat();
         Bureaucrat(const std::string &, int);
         Bureaucrat(const Bureaucrat &);
@@ -33,12 +32,16 @@ class Bureaucrat
         class GradeTooHighException : public std::exception
         {
             public:
+            GradeTooHighException(); 
+            ~GradeTooHighException() throw() ;
             virtual const char *what() const throw();
         };
         
         class GradeTooLowException : public std::exception
         {
             public:
+            GradeTooLowException();
+            ~GradeTooLowException() throw();
             virtual const char *what() const throw();
         };
         
