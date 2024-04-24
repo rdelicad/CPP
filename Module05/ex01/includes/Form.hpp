@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:31:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/23 19:14:47 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:26:24 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #define FORM_HPP
 
 #include <string>
-#include "Bureaucrat.hpp"
+#include "Headers.h"
+
+class Bureaucrat;
 
 class Form
 {
@@ -26,13 +28,14 @@ class Form
 	public:
 		Form();
 		~Form();
+		Form(const std::string, const int, const int);
 		Form(const Form &);
 		Form &operator=(const Form &);
 
-		std::string getExecute() const;
+		std::string getName() const;
 		bool getSigned() const;
 		int getSign() const;
-		int getName() const;
+		int getExecute() const;
 
 		class GradeTooHighException : public std::exception
         {

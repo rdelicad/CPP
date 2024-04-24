@@ -6,17 +6,16 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:40:54 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/23 19:14:38 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:28:26 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include <exception>
-#include <iostream>
-#include <string>
-#include "Form.hpp"
+#include "Headers.h"
+
+class Form;
 
 class Bureaucrat
 {
