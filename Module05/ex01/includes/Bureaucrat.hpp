@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:40:54 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/24 16:28:26 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/27 11:22:07 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define BUREAUCRAT_HPP
 
 #include "Headers.h"
-
 class Form;
 
 class Bureaucrat
@@ -24,16 +23,16 @@ class Bureaucrat
         int _grade;
 
     public:
+        ~Bureaucrat();
         Bureaucrat(const std::string &, int);
         Bureaucrat(const Bureaucrat &);
         Bureaucrat &operator=(const Bureaucrat &);
-        ~Bureaucrat();
                 
         class GradeTooHighException : public std::exception
         {
             public:
             GradeTooHighException(); 
-            ~GradeTooHighException() throw() ;
+            ~GradeTooHighException() throw();
             virtual const char *what() const throw();
         };
         
@@ -50,12 +49,6 @@ class Bureaucrat
         void incrementGrade();
         void decrementGrade();
         void signForm(Form &);
-        /*
-        Esta función intenta firmar un formulario. 
-        Si el formulario se firma con éxito, 
-        imprime un mensaje. Si no, imprime un 
-        mensaje diferente que incluye la razón del fracaso.
-        */
 };
 
 std::ostream &operator<<(std::ostream &, Bureaucrat const &);

@@ -6,14 +6,13 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:31:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/24 20:26:24 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:35:33 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_HPP
 #define FORM_HPP
 
-#include <string>
 #include "Headers.h"
 
 class Bureaucrat;
@@ -26,22 +25,16 @@ class Form
 		const int _gradeToSign; //grado requerido para firmar
 		const int _gradeToExecute; // grado para ejecutar
 	public:
-		Form();
 		~Form();
 		Form(const std::string, const int, const int);
 		Form(const Form &);
 		Form &operator=(const Form &);
-
-		std::string getName() const;
-		bool getSigned() const;
-		int getSign() const;
-		int getExecute() const;
-
+		
 		class GradeTooHighException : public std::exception
         {
             public:
             GradeTooHighException(); 
-            ~GradeTooHighException() throw() ;
+            ~GradeTooHighException() throw();
             virtual const char *what() const throw();
         };
         
@@ -52,10 +45,14 @@ class Form
             ~GradeTooLowException() throw();
             virtual const char *what() const throw();
         };
+		
+		std::string getName() const;
+		void setSigned(bool); //cambiar estado de la firma
+		bool getSigned() const; //obtener si esta firmado o no
+		int getSign() const; //obtener grado para firmar
+		int getExecute() const; //obtener grado ejecucion
 
-		void incrementGrade();
-        void decrementGrade();
-		int beSigned(Bureaucrat &);
+		void beSigned(Bureaucrat &);
 		/*
 		Esta función toma un Bureaucrat como parámetro
 		y cambia el estado de isSigned a verdadero 

@@ -6,20 +6,23 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:10:10 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/24 16:25:07 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:28:57 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Headers.h"
+#include "../includes/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade)
-: _name(name)
+: _name(name), _grade(150)
 {
-	std::cout << "\033[2;33mConstructor [Bureaucrat]\033[0m" << std::endl;
+	std::cout << "\033[2;33m[Bureaucrat] Constructor called\033[0m" << std::endl;
 	try 
 	{
 		if (grade < 1)
+		{
+			_grade = 1;
 			throw(Bureaucrat::GradeTooLowException());
+		}
 		else if (grade > 150)
 			throw(Bureaucrat::GradeTooHighException());
 		else
@@ -32,27 +35,27 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade)
 }
 
 Bureaucrat::~Bureaucrat()
-{std::cout << "\033[2;33mDestructor [Bureaucrat]\033[0m" << std::endl;}
+{std::cout << "\033[2;33m[Bureaucrat] Destructor called\033[0m" << std::endl;}
 
 Bureaucrat::GradeTooHighException::GradeTooHighException()
-{std::cout << "\033[2;34mConstructor [High]\033[0m" << std::endl;}
+{std::cout << "\033[2;34m[Bureaucrat] Constructor [High]\033[0m" << std::endl;}
 
 Bureaucrat::GradeTooHighException::~GradeTooHighException() throw()
-{std::cout << "\033[2;34mDestructor [High]\033[0m" << std::endl;}
+{std::cout << "\033[2;34m[Bureaucrat] Destructor [High]\033[0m" << std::endl;}
 
 Bureaucrat::GradeTooLowException::GradeTooLowException()
-{std::cout << "\033[2;36mConstructor [Low]\033[0m" << std::endl;}
+{std::cout << "\033[2;36m[Bureaucrat] Constructor [Low]\033[0m" << std::endl;}
 
 Bureaucrat::GradeTooLowException::~GradeTooLowException() throw()
-{std::cout << "\033[2;36mDestructor [Low]\033[0m" << std::endl;}
+{std::cout << "\033[2;36m[Bureaucrat] Destructor [Low]\033[0m" << std::endl;}
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy)
 : _name(copy.getName()), _grade(copy.getGrade()) 
-{std::cout << "\033[2;37mCopy constructor\033[0m" << std::endl;}
+{std::cout << "\033[2;37m[Bureaucrat] Copy constructor\033[0m" << std::endl;}
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
-	std::cout << "\033[2;37mOperator asignation\033[0m" << std::endl;
+	std::cout << "\033[2;37m[Bureaucrat] Operator asignation\033[0m" << std::endl;
 	if (_grade != other._grade)
 		_grade = other._grade;
 	return *this;
@@ -79,13 +82,13 @@ void Bureaucrat::incrementGrade()
     }
     catch(const Bureaucrat::GradeTooHighException& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << e.what() << std::endl;
     }
 }
 
 void Bureaucrat::decrementGrade()
 {
-     try
+    try
     {
         if (_grade < 150)
         	_grade++;
@@ -100,30 +103,44 @@ void Bureaucrat::decrementGrade()
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "\033[0;31mGrade too High!!\033[0m";
+	return "\033[0;31m[Bureaucrat] Grade too High!!\033[0m";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "\033[0;31mGrade too Low!!\033[0m";
+	return "\033[0;31m[Bureaucrat] Grade too Low!!\033[0m";
 }
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &obj)
 {
-	os << obj.getName() << ", bureaucrat Grade " << obj.getGrade();
+	os	<< "\033[1;37m"
+		<< obj.getName() 
+		<< ", bureaucrat Grade " 
+		<< obj.getGrade()
+		<< "\033[0m";
 	return os;
 }
 
 void Bureaucrat::signForm(Form &other)
 {
-	if (other.beSigned(*this))
-		std::cout	<< "\033[1;32m[" << getName() << "]"
-					<< " signed " 
-					<< "[" << other.getName() << "]\033[0m"
-					<< std::endl;
+	if (other.getSign() > this->getGrade())
+	{
+		other.setSigned(true);
+		std::cout	<< "\033[1;32m"
+					<< getName()
+					<< " signed "
+					<< other.getName()
+					<< "\033[0m" << std::endl;
+	}
 	else
-		std::cout	<< "\033[1;31m[" << getName() << "]"
+	{
+		other.setSigned(false);
+		std::cout	<< "\033[1;31m"
+					<< getName()
 					<< " couldn't sign "
-					<< "[" << other.getName() << "]"
-					<< " beacuse ...\033[1;31m " << std::endl;
-} 
+					<< other.getName()
+					<< " because the degree is not enough"
+					<< "\033[0m" << std::endl;
+	}
+		
+}
