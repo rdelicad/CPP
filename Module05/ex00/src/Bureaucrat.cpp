@@ -6,20 +6,23 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:10:10 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/21 15:01:35 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/26 20:22:43 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade)
-: _name(name)
+: _name(name), _grade(150)
 {
 	std::cout << "\033[2;33mConstructor [Bureaucrat]\033[0m" << std::endl;
 	try 
 	{
 		if (grade < 1)
+		{
+			_grade = 1;
 			throw(Bureaucrat::GradeTooLowException());
+		}
 		else if (grade > 150)
 			throw(Bureaucrat::GradeTooHighException());
 		else

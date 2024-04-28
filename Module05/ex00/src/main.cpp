@@ -6,11 +6,21 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 16:06:37 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/21 14:55:36 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/26 20:21:51 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
+
+void executeNull()
+{
+	std::cout << std::endl;
+	std::cout << "\033[1;34m------- test Bureaucrat -------\033[0m" << std::endl;
+	Bureaucrat b0("rubén", 0);
+	Bureaucrat b1("rubén", 173);
+	std::cout << b0 << std::endl;
+	std::cout << b1 << std::endl;
+}
 
 void executeNormal()
 {
@@ -60,9 +70,10 @@ void executeLow()
 
 int main()
 {
-	executeNormal();
-	executeHigh();
-	executeLow();
+	executeNull();
+	//executeNormal();
+	//executeHigh();
+	//executeLow();
 
 	return 0;
 }
