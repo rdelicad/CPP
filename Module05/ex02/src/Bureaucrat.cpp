@@ -6,12 +6,12 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:10:10 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/28 11:41:42 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/28 12:44:33 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade)
 : _name(name), _grade(150)
@@ -122,7 +122,7 @@ std::ostream &operator<<(std::ostream &os, Bureaucrat const &obj)
 	return os;
 }
 
-void Bureaucrat::signForm(Form &other)
+void Bureaucrat::signForm(AForm &other)
 {
 	if (other.beSigned(*this))
 	{
@@ -144,4 +144,25 @@ void Bureaucrat::signForm(Form &other)
 					<< "\033[0m" << std::endl;
 	}
 		
+}
+
+void Bureaucrat::executeForm(AForm const &form)
+{
+	if (form.execute(*this))
+	{
+		std::cout	<< "\033[1;32m"
+					<< getName()
+					<< " execute "
+					<< form.getName()
+					<< "\033[0m" << std::endl;
+	}
+	else
+	{
+		std::cout	<< "\033[1;31m"
+					<< getName()
+					<< " couldn't execute "
+					<< form.getName()
+					<< " because the degree is not enough"
+					<< "\033[0m" << std::endl;
+	}
 }

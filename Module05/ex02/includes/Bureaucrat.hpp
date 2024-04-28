@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:40:54 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/28 11:40:27 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/28 12:33:11 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <string>
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -50,7 +50,8 @@ class Bureaucrat
         int getGrade() const;
         void incrementGrade();
         void decrementGrade();
-        void signForm(Form &);
+        void signForm(AForm &);
+        void executeForm(AForm const &);
 };
 
 std::ostream &operator<<(std::ostream &, Bureaucrat const &);

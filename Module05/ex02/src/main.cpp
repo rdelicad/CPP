@@ -6,23 +6,24 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 16:06:37 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/28 11:39:30 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/28 13:12:09 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
+#include "../includes/AForm.hpp"
+#include "../includes/ShrubberyCreationForm.hpp"
 
 //#********************************************************#
-//#                   Test Form                            #
+//#                   Test AForm                            #
 //#********************************************************#
 
-void validForm()
+/* void validForm()
 {
 	std::cout << std::endl;
-	std::cout << "\033[1;34m------- Bureaucrat signed Form -------\033[0m" << std::endl;
+	std::cout << "\033[1;34m------- Bureaucrat signed AForm -------\033[0m" << std::endl;
 	Bureaucrat a("Jose", 1);
-	Form b("papeles", 2, 1);
+	AForm b("papeles", 2, 1);
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	a.signForm(b);
@@ -33,9 +34,9 @@ void validForm()
 void inValidForm()
 {
 	std::cout << std::endl;
-	std::cout << "\033[1;34m------- invalid signed Form -------\033[0m" << std::endl;
+	std::cout << "\033[1;34m------- invalid signed AForm -------\033[0m" << std::endl;
 	Bureaucrat a("Jose", 4);
-	Form b("papeles", 2, 1);
+	AForm b("papeles", 2, 1);
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	a.signForm(b);
@@ -48,8 +49,8 @@ void testExceptions()
 	std::cout << "\033[1;34m------- test Exceptions -------\033[0m" << std::endl;
 	Bureaucrat a("Antonio", 0);
 	Bureaucrat b("pepe", 456);
-	Form c("contrato", 0, 3);
-	Form d("contrato2", 234, 3);
+	AForm c("contrato", 0, 3);
+	AForm d("contrato2", 234, 3);
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << c << std::endl;
@@ -61,8 +62,8 @@ void testCopyOperator()
 	std::cout << std::endl;
 	std::cout << "\033[1;34m------- test Copy -------\033[0m" << std::endl;
 	Bureaucrat pepe("pepe", 1);
-	Form a("Alguien", 3, 2);
-	Form b(a);
+	AForm a("Alguien", 3, 2);
+	AForm b(a);
 	pepe.signForm(a);
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
@@ -70,7 +71,7 @@ void testCopyOperator()
 	std::cout << "\033[1;34m------- test Operator -------\033[0m" << std::endl;
 	b = a;
 	std::cout << b << std::endl;
-}
+} */
 
 //#********************************************************#
 //#                   Test Bureaucrat                      #
@@ -144,12 +145,14 @@ int main()
 				<< "#********************************************************#"
 				<< "\033[0m"
 				<< std::endl;
-	validForm();
+	ShrubberyCreationForm casa("casa");
+	/* validForm();
 	inValidForm();
 	testExceptions();
-	testCopyOperator();
+	testCopyOperator(); */
+	
 
-	std::cout	<< std::endl
+	/* std::cout	<< std::endl
 				<< "\033[1;35m"
 				<< "#********************************************************#"
 				<< std::endl
@@ -158,10 +161,10 @@ int main()
 				<< "#********************************************************#"
 				<< "\033[0m"
 				<< std::endl;
-	executeNull();
 	executeNormal();
+	executeNull();
 	executeHigh();
-	executeLow();
+	executeLow(); */
 
 	return 0;
 }

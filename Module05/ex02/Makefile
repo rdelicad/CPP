@@ -6,14 +6,15 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 13:33:45 by rdelicad          #+#    #+#              #
-#    Updated: 2024/04/28 10:33:19 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/04/28 11:59:06 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAG = -Wall -Wextra -Werror -std=c++98 -Wshadow -g
 NAME = buro
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
+	RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 SRCS = $(addprefix src/, $(SRC))
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 all: $(NAME)
