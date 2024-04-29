@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:31:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/29 18:20:57 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:20:50 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,20 +40,28 @@ class AForm
 		virtual bool execute(Bureaucrat const &) const = 0;
 		
 		class GradeTooHighException : public std::exception
-        {
-            public:
-            GradeTooHighException(); 
-            ~GradeTooHighException() throw();
-            virtual const char *what() const throw();
-        };
+		{
+			public:
+			virtual const char *what() const throw();
+		};
         
-        class GradeTooLowException : public std::exception
-        {
-            public:
-            GradeTooLowException();
-            ~GradeTooLowException() throw();
-            virtual const char *what() const throw();
-        };
+		class GradeTooLowException : public std::exception
+		{
+			public:
+			virtual const char *what() const throw();
+		};
+		
+		class SignedException : public std::exception
+		{
+			public:
+			virtual const char *what() const throw();
+		};
+
+		class ExecuteException : public std::exception
+		{
+			public:
+			virtual const char *what() const throw();
+		};
 };
 
 std::ostream &operator<<(std::ostream &, AForm const &);

@@ -6,14 +6,14 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:02:03 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/29 18:50:01 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:34:37 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // formulario de creacion de arbustos
 
 #include "../includes/ShrubberyCreationForm.hpp"
-#include "Bureaucrat.hpp"
+#include "../includes/Bureaucrat.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 : AForm(target, 145, 137)
@@ -44,8 +44,10 @@ bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	//verificar si el formulario esta firmado y verificar si el burocrata tiene tiene nivel para ejecutar
 	try
 	{
-		if (!this->getSigned() || (this->getExecute() > executor.getGrade()))
-			throw AForm::GradeTooLowException();
+		if (this->getSigned() == false)
+			throw AForm::SignedException();
+		else if (this->getExecute() < executor.getGrade())
+			throw AForm::ExecuteException();
 	}
 	catch(const std::exception& e)
 	{

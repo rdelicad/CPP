@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:30:20 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/28 12:47:37 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:21:22 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,6 @@ AForm::~AForm()
 //#                   nested classes                       #
 //#********************************************************#
 
-AForm::GradeTooHighException::GradeTooHighException()
-{std::cout << "\033[2;34m[AForm] Constructor [High]\033[0m" << std::endl;}
-
-AForm::GradeTooHighException::~GradeTooHighException() throw()
-{std::cout << "\033[2;34m[AForm] Destructor [High]\033[0m" << std::endl;}
-
-AForm::GradeTooLowException::GradeTooLowException()
-{std::cout << "\033[2;36m[AForm] Constructor [Low]\033[0m" << std::endl;}
-
-AForm::GradeTooLowException::~GradeTooLowException() throw()
-{std::cout << "\033[2;36m[AForm] Destructor [Low]\033[0m" << std::endl;}
-
 const char* AForm::GradeTooHighException::what() const throw()
 {
 	return "\033[1;31m[AForm] Grade too High!!\033[0m";
@@ -77,6 +65,16 @@ const char* AForm::GradeTooHighException::what() const throw()
 const char* AForm::GradeTooLowException::what() const throw()
 {
 	return "\033[1;31m[AForm] Grade too Low!!\033[0m";
+}
+
+const char* AForm::SignedException::what() const throw()
+{
+	return "\033[1;31m[AForm] Unsigned form!!\033[0m";
+}
+
+const char* AForm::ExecuteException::what() const throw()
+{
+	return "\033[1;31m[AForm] Grade too Low executed!!\033[0m";
 }
 
 //#********************************************************#

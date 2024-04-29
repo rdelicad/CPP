@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 16:06:37 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/28 13:12:09 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:37:21 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,63 +15,21 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 
 //#********************************************************#
-//#                   Test AForm                            #
+//#                   Shrubbery Form                       #
 //#********************************************************#
 
-/* void validForm()
+void shrubberyForm()
 {
-	std::cout << std::endl;
-	std::cout << "\033[1;34m------- Bureaucrat signed AForm -------\033[0m" << std::endl;
-	Bureaucrat a("Jose", 1);
-	AForm b("papeles", 2, 1);
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	a.signForm(b);
-	b.getSigned();
-	std::cout << b << std::endl;
-}
-
-void inValidForm()
-{
-	std::cout << std::endl;
-	std::cout << "\033[1;34m------- invalid signed AForm -------\033[0m" << std::endl;
-	Bureaucrat a("Jose", 4);
-	AForm b("papeles", 2, 1);
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	a.signForm(b);
-	b.getSigned();
-}
-
-void testExceptions()
-{
-	std::cout << std::endl;
-	std::cout << "\033[1;34m------- test Exceptions -------\033[0m" << std::endl;
-	Bureaucrat a("Antonio", 0);
-	Bureaucrat b("pepe", 456);
-	AForm c("contrato", 0, 3);
-	AForm d("contrato2", 234, 3);
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << c << std::endl;
-	std::cout << d << std::endl;
-}
-
-void testCopyOperator()
-{
-	std::cout << std::endl;
-	std::cout << "\033[1;34m------- test Copy -------\033[0m" << std::endl;
 	Bureaucrat pepe("pepe", 1);
-	AForm a("Alguien", 3, 2);
-	AForm b(a);
-	pepe.signForm(a);
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << std::endl;
-	std::cout << "\033[1;34m------- test Operator -------\033[0m" << std::endl;
-	b = a;
-	std::cout << b << std::endl;
-} */
+	ShrubberyCreationForm target("arbol");
+	pepe.signForm(target);
+	target.getSigned();
+	std::cout << target << std::endl;
+	ShrubberyCreationForm copy(target);
+	copy = target;
+	std::cout << copy << std::endl;
+	target.execute(pepe);
+}
 
 //#********************************************************#
 //#                   Test Bureaucrat                      #
@@ -111,7 +69,7 @@ void executeHigh()
 	std::cout << b3 << std::endl;
 	b3.incrementGrade();
 	std::cout << b3 << std::endl;
-}
+} 
 
 void executeLow()
 {
@@ -140,31 +98,12 @@ int main()
 				<< "\033[1;35m"
 				<< "#********************************************************#"
 				<< std::endl
-				<< "#                   Test Form                            #"
+				<< "#                   Shrubbery Creation Form              #"
 				<< std::endl
 				<< "#********************************************************#"
 				<< "\033[0m"
 				<< std::endl;
-	ShrubberyCreationForm casa("casa");
-	/* validForm();
-	inValidForm();
-	testExceptions();
-	testCopyOperator(); */
-	
-
-	/* std::cout	<< std::endl
-				<< "\033[1;35m"
-				<< "#********************************************************#"
-				<< std::endl
-				<< "#                   Test Bureaucrat                      #"
-				<< std::endl
-				<< "#********************************************************#"
-				<< "\033[0m"
-				<< std::endl;
-	executeNormal();
-	executeNull();
-	executeHigh();
-	executeLow(); */
+	shrubberyForm();
 
 	return 0;
 }
