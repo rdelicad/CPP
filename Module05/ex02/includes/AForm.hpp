@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:31:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/29 20:20:50 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:18:37 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class AForm
 		const int _gradeToSign;
 		const int _gradeToExecute;
 	public:
+		AForm();
 		virtual ~AForm();
 		AForm(const std::string, const int, const int);
 		AForm(const AForm &);

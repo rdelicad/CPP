@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:03:01 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/29 19:21:22 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:16:31 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class ShrubberyCreationForm : public AForm
 {
 	public:
+		ShrubberyCreationForm();
 		ShrubberyCreationForm(const std::string &);
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm(const ShrubberyCreationForm &);

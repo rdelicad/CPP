@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:30:20 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/29 20:21:22 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:21:44 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,16 @@
 //#                   Canonical orthodox                   #
 //#********************************************************#
 
+AForm::AForm()
+: _gradeToSign(150), _gradeToExecute(150)
+{
+    std::cout << "\033[2;34m[AForm] Constructor default\033[0m" << std::endl;
+}
+
 AForm::AForm(const std::string name, const int toSign, const int toExecute)
 : _name(name), _isSigned(false), _gradeToSign(toSign), _gradeToExecute(toExecute) 
 {
-    std::cout << "\033[2;34m[AForm] Constructor default\033[0m" << std::endl;
+    std::cout << "\033[2;34m[AForm] Constructor arguments\033[0m" << std::endl;
     try
     {
         if (toSign < 1)

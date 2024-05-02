@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:02:03 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/29 20:34:37 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:17:21 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 #include "../includes/Bureaucrat.hpp"
 
+ShrubberyCreationForm::ShrubberyCreationForm()
+{
+	std::cout << "\033[2;34m[ShrubberyCreationForm] Constructor default\033[0m" << std::endl;
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target)
 : AForm(target, 145, 137)
 {
-	std::cout << "\033[2;34m[ShrubberyCreationForm] Constructor default\033[0m" << std::endl;
+	std::cout << "\033[2;34m[ShrubberyCreationForm] Constructor arguments\033[0m" << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -57,7 +62,7 @@ bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	
 	
 	//crear un objeto de archivo de salida con el nombre del archivo basado en el target del formulario
-	std::ofstream archivo(this->getName() + "_shrubbery");
+	std::ofstream archivo((this->getName() + "_shrubbery").c_str());
 	if (!archivo)
 	{
 		std::cerr << "No se pudo abrir el archivo" << std::endl;
