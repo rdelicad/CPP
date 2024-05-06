@@ -6,12 +6,11 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:30:20 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/28 11:41:55 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:14:34 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Form.hpp"
-#include "../includes/Bureaucrat.hpp"
 
 //#********************************************************#
 //#                   Canonical orthodox                   #
@@ -100,20 +99,6 @@ int Form::getExecute() const {return _gradeToExecute;}
 bool Form::getSigned() const
 {
     return this->_isSigned;
-   /*  if (_isSigned == true)
-    {
-        std::cout   << "\033[1;32m"
-                    << "Is signed" 
-                    << "\033[0m" << std::endl;
-        return true;   
-    }
-    else  
-    {
-        std::cout   << "\033[1;31m"
-                    << "Unsigned" 
-                    << "\033[0m" << std::endl;
-        return false;
-    } */
 }
 
 int Form::beSigned(Bureaucrat &other)

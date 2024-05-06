@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 11:01:46 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/04 19:04:24 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/06 13:59:52 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ AForm *Intern::makePresidentialPardonForm(const std::string &target)
 	return new PresidentialPardonForm(target);
 }
 
+//sin alias
+//AForm *(Intern::*formCreator[3])(const std::string &);
 AForm *Intern::makeForm(const std::string &nameForm, const std::string &targetForm)
 {
 	std::string formNames[3];

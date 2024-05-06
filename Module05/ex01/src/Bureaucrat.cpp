@@ -6,12 +6,11 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 14:10:10 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/28 11:41:42 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:14:56 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
-#include "../includes/Form.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade)
 : _name(name), _grade(150)

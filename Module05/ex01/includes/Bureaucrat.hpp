@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 14:40:54 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/04/28 11:40:27 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:15:04 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
 
 class Form;
 

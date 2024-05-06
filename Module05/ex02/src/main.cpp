@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 16:06:37 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/02 20:01:45 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:38:12 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../includes/AForm.hpp"
 #include "../includes/ShrubberyCreationForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
+#include "../includes/PresidentialPardonForm.hpp"
 #include <ctime>
 
 //#********************************************************#
@@ -49,6 +50,15 @@ void robotoForm()
 	a.execute(jose);
 }
 
+void presidentialForm()
+{
+	Bureaucrat jose("jose", 1);
+	PresidentialPardonForm a("target");
+	jose.signForm(a);
+	a.getSigned();
+	jose.executeForm(a);
+}
+
 
 int main()
 {
@@ -73,6 +83,17 @@ int main()
 				<< "\033[0m"
 				<< std::endl;
 	robotoForm();
+
+	std::cout	<< std::endl
+				<< "\033[1;35m"
+				<< "#********************************************************#"
+				<< std::endl
+				<< "#                   Presidential Form                    #"
+				<< std::endl
+				<< "#********************************************************#"
+				<< "\033[0m"
+				<< std::endl;
+	presidentialForm();
 
 	return 0;
 }
