@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:38:30 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/07 22:17:06 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:20:36 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,72 +35,92 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 	return *this;
 }
 
-int typeChar(const std::string &type)
+void typeChar(const std::string &input)
 {
-	if (type.size() == 1)
-	{
-		if (std::isalpha(type[0]))
-			return 1;
-		else
-			return 2;
-	}
-	else
-		return 3;
-}
-
-
-int typeInt(const std::string &input)
-{
-	(void)input;
-	return 2;
-}
-
-int typeFloat(const std::string &input)
-{
-	(void)input;
-	return 2;	
-}
-
-int typeDouble(const std::string &input)
-{
-	(void)input;
-	return 3;
-}
-
-void display(const std::string input, const std::string &nameType, int status)
-{
-	std::string messages[3];
-	messages[0] = "'" + input + "'";
-	messages[1] = "Non displayable";
-	messages[2] = "Impossible";
-
-	if (status == 1)
-		std::cout << nameType << messages[0] << std::endl;
-	else if (status == 2)
-		std::cout << nameType << messages[1] << std::endl;
-	else if (status == 3)
-		std::cout << nameType << messages[2] << std::endl;
-}
-
-
-void ScalarConverter::convert(const std::string &input)
-{
-	const std::string types[4] = {"char:	", "int:	", "float:	", "double:	"};
-	int status[4];
-	status[0] = typeChar(input);  
-	status[1] = typeInt(input);
-	status[2] = typeFloat(input);
-	status[3] = typeDouble(input);
-
-	//tenemos un array por ejemplo {1, 3, 1, 0}
-	//con este numero llamamos a la funcion display
-
 	int i = 0;
-	while (i < 4)
+	int flag = 0;
+	while (input[i])
 	{
-		display(input, types[i], status[i]);
+		if (!std::isalpha(input[i]))
+		{
+			// algun caracter no es alfabetico
+			flag = 1;
+			break;	
+		}
 		i++;
 	}
-	
-	
+	// todos son alfabeticos
+	if (flag == 0)
+	{
+		// todo es alphabetico, convertir a char
+		if (input.size() == 1)
+		{
+			char c = static_cast<char>(input[0]);
+			std::cout << "char: '" << c << "'" << std::endl;
+		}
+		else
+		{
+			// tiene mas de un caracter, mensaje Impossible
+			std::cout << "char: impossible" << std::endl;
+		}
+	}
+	// flag = 1
+	else
+	{
+		// significa que puede ser o un numero o un caracter no imprimible
+		if (i == 0)
+		{
+			if (!std::isalpha(input[0]) && !std::isdigit(input[0]))
+				std::cout << "char: Non displayable" << std::endl;
+		}
+		else if (i > 0)
+			std::cout << "char: impossible" << std::endl;
+		// convertir int a char
+		i = 0;
+		while (input[i])
+		{
+			if (!std::isdigit(input[i]))
+				flag = 2;
+			i++;
+		}
+		// todos son numeros
+		if (flag == 1)
+		{
+			int num = std::atoi(input.c_str());
+			if (num > 32 && num < 127)
+			{
+				char c = static_cast<char>(num);
+				std::cout << "char: '" << c << "'" << std::endl;
+			}
+			else
+				std::cout << "char: Non displayable" << std::endl;
+		}
+		// numeros con caracteres
+		else 
+		{
+			// si es un float
+			if (input.back() == 'f')
+			{
+				std::string numberPart = input.substr(0, input.size() - 1);
+				int num = std::atoi(numberPart.c_str());
+				if (num > 32 && num < 127)
+				{
+					char c = static_cast<char>(num);
+					std::cout << "char: '" << c << "'" << std::endl;
+				}
+				else
+					std::cout << "char: Non displayable" << std::endl;
+			}
+				
+		}
+		
+	}
+}
+
+void ScalarConverter::convert(const std::string &input) 
+{
+	typeChar(input);
+	/* typeInt(input);
+	typeFloat(input);
+	typeDouble(input); */
 }
