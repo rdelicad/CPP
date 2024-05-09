@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 18:51:08 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/08 15:03:35 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/09 19:44:21 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cctype>
 #include <sstream>
 #include <cstdlib>
+#include <limits>
 
 class ScalarConverter
 {
