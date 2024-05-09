@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:38:30 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/09 20:12:27 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/09 20:43:50 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,110 +35,24 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 	return *this;
 }
 
-
-
-void typeChar(const std::string &input)
-{
-	int i = 0;
-	int flag = 0; // 0 = es alfabetico, 1 = no es alfabetico
-	while (input[i])
-	{
-		if (!std::isalpha(input[i]))
-		{
-			flag = 1;
-			break;	
-		}
-		i++;
-	}
-	
-	if (flag == 0)
-	{
-		// all es alphabetico, convertir a char
-		if (input.size() == 1)
-		{
-			char c = static_cast<char>(input[0]);
-			std::cout << "char: '" << c << "'" << std::endl;
-		}
-		else
-		{
-			// tiene mas de un caracter, mensaje Impossible
-			std::cout << "char: impossible" << std::endl;
-		}
-	}
-	else
-	{
-		// significa que puede ser o un numero o un caracter no imprimible
-		if (i == 0)
-		{
-			if (!std::isalpha(input[0]) && !std::isdigit(input[0]))
-				std::cout << "char: impossible" << std::endl;
-		}
-		else if (i > 0)
-			std::cout << "char: impossible" << std::endl;
-		// convertir int a char
-		i = 0;
-		while (input[i])
-		{
-			if (!std::isdigit(input[i]))
-				flag = 2;
-			i++;
-		}
-		// hay numeros
-		if (flag == 1)
-		{
-			int num = std::atoi(input.c_str());
-			if (num > 32 && num < 127)
-			{
-				char c = static_cast<char>(num);
-				std::cout << "char: '" << c << "'" << std::endl;
-			}
-			else
-				std::cout << "char: Non displayable" << std::endl;
-		}
-		// numeros con caracteres
-		else 
-		{
-			// si es un float
-			if (input[input.size() - 1] == 'f' && std::isdigit(input[input.size() - 2]))
-			{
-				std::string numberPart = input.substr(0, input.size() - 1);
-				int num = std::atoi(numberPart.c_str());
-				if (num < 0)
-					std::cout << "char: impossible" << std::endl;
-				else if (num > 32 && num < 127)
-				{
-					char c = static_cast<char>(num);
-					std::cout << "char: '" << c << "'" << std::endl;
-				}
-				else
-					std::cout << "char: Non displayable" << std::endl;
-			}
-			// resto de los casos
-			else
-			{
-				int num = std::atoi(input.c_str());
-				if (num > 32 && num < 127)
-				{
-					char c = static_cast<char>(num);
-					std::cout << "char: '" << c << "'" << std::endl;
-				}
-				else
-					std::cout << "char: Non displayable" << std::endl;
-			}
-		}
-		
-	}
-}
-
 void ScalarConverter::convert(const std::string &input) 
 {
-	
-	
-	typeChar(input);
-	//typeInt(input);
-	//typeFloat(input);
-	//typeDouble(input);
-
-
-	
+	if (input.length() == 1 && !isdigit(input[0]))
+	{
+		std::cout << "char: '" << input << "'" << std::endl;
+	}
+	else if (input[input.size() - 1] == 'f')
+	{	
+		char *end;
+		float f = strtof(input.c_str(), &end); // ej: -42.0f, 3.0f, 67.0f
+		if ((f <= 32 && f >= 0) || (f >= 127))
+			std::cout << "char: Non displayable" << std::endl;
+		else if (f < 0)
+			std::cout << "char: impossible" << std::endl;
+		else
+			std::cout << "char: '" << static_cast<char>(input[0]) << "'" << std::endl;
+		std::cout << "int: " << static_cast<int>(f) << std::endl;
+		std::cout << "float: " << f << *end << std::endl;
+		std::cout << "double: " << f << std::endl;
+	}
 }
