@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:38:30 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/09 20:12:27 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/10 15:09:03 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,108 +35,165 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 	return *this;
 }
 
-
-
-void typeChar(const std::string &input)
+bool isDigit(const std::string &input)
 {
-	int i = 0;
-	int flag = 0; // 0 = es alfabetico, 1 = no es alfabetico
-	while (input[i])
+	size_t i = 0;
+	while (i < input.size())
 	{
-		if (!std::isalpha(input[i]))
-		{
-			flag = 1;
-			break;	
-		}
+		if (!std::isdigit(input[i]))
+			return false;
 		i++;
 	}
-	
-	if (flag == 0)
+	return true;
+}
+
+bool isAlpha(const std::string &input)
+{
+	size_t i = 0;
+	while (i < input.size())
 	{
-		// all es alphabetico, convertir a char
-		if (input.size() == 1)
+		if (!std::isalpha(input[i]))
+			return false;
+		i++;
+	}
+	return true;
+}
+
+bool isDigitSigno(const std::string &input)
+{
+	size_t i = 0;
+	if (input[0] == '-' || input[0] == '+')
+		i++;
+	while (i < input.size())
+	{
+		if (!std::isdigit(input[i]))
+			return false;
+		i++;
+	}
+	return true;
+}
+
+std::ostream &fixedOne(std::ostream& os)
+{
+	return os << std::fixed << std::setprecision(1);
+}
+
+void typeChar(const std::string &input, bool messageChar)
+{
+	if (input.size() == 1)
+	{
+		if (isAlpha(input))
+			std::cout << "char: '" << static_cast<char>(input[0]) << "'" << std::endl;
+		else
+			std::cout << "char: Non displayable" << std::endl;
+	}
+	else if (input.size() > 1)
+	{
+		if (input[0] == '-')
+			std::cout << "char: Non displayable" << std::endl;
+		else
 		{
-			char c = static_cast<char>(input[0]);
-			std::cout << "char: '" << c << "'" << std::endl;
+			std::cout << "char: impossible" << std::endl;
+			std::cout << "int: impossible" << std::endl;
+			std::cout << "float: impossible" << std::endl;
+			std::cout << "double: impossible" << std::endl;
+		}
+		messageChar = false;
+	}
+	
+	if (messageChar)
+	{
+		std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
+		std::cout << "float: " << fixedOne << static_cast<float>(input[0]) << "f" << std::endl;
+		std::cout << "double: " << fixedOne << static_cast<double>(input[0]) << std::endl;
+	}
+}
+
+void typeInt(const std::string &input)
+{
+	if (isDigit(input))
+	{
+		long num = std::atol(input.c_str());
+		if (num < 0)
+			typeChar("fail", false);
+		else if ((num >= 0 && num <= 32) || (num >= 127))
+			typeChar("0", false);
+		else if (num < INT_MIN || num > INT_MAX)
+			typeChar("-", false);
+		else
+			std::cout << "char: '" << static_cast<char>(num) << "'" << std::endl;
+		
+		if (num < INT_MIN || num > INT_MAX)
+		{
+			std::cout << "int : impossible" << std::endl;
+			std::cout << "float : impossible" << std::endl;
+			std::cout << "double : impossible" << std::endl;
 		}
 		else
 		{
-			// tiene mas de un caracter, mensaje Impossible
-			std::cout << "char: impossible" << std::endl;
+			std::cout << "int: " << static_cast<int>(num) << std::endl;
+			std::cout << "float: " << fixedOne << static_cast<float>(num) << "f" << std::endl;
+			std::cout << "double: " << fixedOne << static_cast<double>(num) << std::endl;
 		}
 	}
-	else
-	{
-		// significa que puede ser o un numero o un caracter no imprimible
-		if (i == 0)
-		{
-			if (!std::isalpha(input[0]) && !std::isdigit(input[0]))
-				std::cout << "char: impossible" << std::endl;
-		}
-		else if (i > 0)
-			std::cout << "char: impossible" << std::endl;
-		// convertir int a char
-		i = 0;
-		while (input[i])
-		{
-			if (!std::isdigit(input[i]))
-				flag = 2;
-			i++;
-		}
-		// hay numeros
-		if (flag == 1)
-		{
-			int num = std::atoi(input.c_str());
-			if (num > 32 && num < 127)
-			{
-				char c = static_cast<char>(num);
-				std::cout << "char: '" << c << "'" << std::endl;
-			}
-			else
-				std::cout << "char: Non displayable" << std::endl;
-		}
-		// numeros con caracteres
-		else 
-		{
-			// si es un float
-			if (input[input.size() - 1] == 'f' && std::isdigit(input[input.size() - 2]))
-			{
-				std::string numberPart = input.substr(0, input.size() - 1);
-				int num = std::atoi(numberPart.c_str());
-				if (num < 0)
-					std::cout << "char: impossible" << std::endl;
-				else if (num > 32 && num < 127)
-				{
-					char c = static_cast<char>(num);
-					std::cout << "char: '" << c << "'" << std::endl;
-				}
-				else
-					std::cout << "char: Non displayable" << std::endl;
-			}
-			// resto de los casos
-			else
-			{
-				int num = std::atoi(input.c_str());
-				if (num > 32 && num < 127)
-				{
-					char c = static_cast<char>(num);
-					std::cout << "char: '" << c << "'" << std::endl;
-				}
-				else
-					std::cout << "char: Non displayable" << std::endl;
-			}
-		}
+	else if (!isDigit(input))
+		typeChar(input, true);
 		
+}
+
+void typeFloat(const std::string &input)
+{
+	if (input[input.size() - 1] == 'f' && std::isdigit(input[input.size() - 2]))
+	{
+		long numFloat = std::atol(input.c_str());
+		char *end;
+		float num = std::strtof(input.c_str(), &end);
+		if (numFloat > INT_MAX)
+		{
+			std::cout << "char : Non displayable" << std::endl;
+			std::cout << "int : impossible" << std::endl;
+			std::cout << "float : impossible" << std::endl;
+			std::cout << "double : impossible" << std::endl;
+		}
+		else if (num < INT_MIN)
+		{
+			typeChar("0", false);
+			std::cout << "int : impossible" << std::endl;
+			std::cout << "float :" << static_cast<float>(num) << "f" << std::endl;
+			std::cout << "double :" << static_cast<double>(num) << std::endl;
+		}
+		else if (num < 0)
+			typeChar("-", false);
+		else if ((num >= 0 && num <= 32) || (num >= 127))
+			typeChar("0", false);
+		else
+		{
+			std::cout << "char: '" << static_cast<char>(num) << "'" << std::endl;
+		}
+		std::cout << "int: " << static_cast<int>(num) << std::endl;
+		std::cout << "float: " << fixedOne << static_cast<float>(num) << "f" << std::endl;
+		std::cout << "double: " << fixedOne << static_cast<double>(num) << std::endl;
 	}
+	else if (input[input.size() - 1] == 'f' && !std::isdigit(input[input.size() - 2]) && input.size() > 1)
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+	}
+	else if (isAlpha(input) || !isDigitSigno(input))
+		typeChar(input, true);
+	else if (isDigitSigno(input))
+		typeInt(input);
 }
 
 void ScalarConverter::convert(const std::string &input) 
 {
 	
 	
-	typeChar(input);
+	//typeChar(input);
 	//typeInt(input);
-	//typeFloat(input);
+	typeFloat(input);
 	//typeDouble(input);
 
 
