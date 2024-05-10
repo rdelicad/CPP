@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:38:30 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/09 20:43:50 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/10 10:03:07 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,24 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 	return *this;
 }
 
+void typeChar(const std::string &input)
+{
+	if (input.size() == 1 && std::isalpha(input[0]))
+		std::cout << "char: '" << static_cast<char>(input[0]) << "'" << std::endl;
+}
+
 void ScalarConverter::convert(const std::string &input) 
 {
-	if (input.length() == 1 && !isdigit(input[0]))
+	typeChar(input);
+	
+}
+
+	/* if (input.length() == 1 && !isdigit(input[0]))
 	{
 		std::cout << "char: '" << input << "'" << std::endl;
+		std::cout << "int: " << static_cast<int>(input[0]) << std::endl;
+		std::cout << "int: " << static_cast<float>(input[0]) << "f" << std::endl;
+		std::cout << "int: " << static_cast<double>(input[0]) << std::endl;
 	}
 	else if (input[input.size() - 1] == 'f')
 	{	
@@ -54,5 +67,4 @@ void ScalarConverter::convert(const std::string &input)
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
 		std::cout << "float: " << f << *end << std::endl;
 		std::cout << "double: " << f << std::endl;
-	}
-}
+	} */
