@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:38:30 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/10 15:09:03 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/11 12:47:58 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,19 +109,26 @@ void typeChar(const std::string &input, bool messageChar)
 	}
 }
 
+int checkChar(const std::string &input)
+{
+	long num = std::atol(input.c_str());
+	if (num < 0)
+		typeChar("fail", false);
+	else if ((num >= 0 && num <= 32) || (num >= 127))
+		typeChar("0", false);
+	else if (num < INT_MIN || num > INT_MAX)
+		typeChar("-", false);
+	else
+		std::cout << "char: '" << static_cast<char>(num) << "'" << std::endl;
+		
+	return num;
+}
+
 void typeInt(const std::string &input)
 {
 	if (isDigit(input))
 	{
-		long num = std::atol(input.c_str());
-		if (num < 0)
-			typeChar("fail", false);
-		else if ((num >= 0 && num <= 32) || (num >= 127))
-			typeChar("0", false);
-		else if (num < INT_MIN || num > INT_MAX)
-			typeChar("-", false);
-		else
-			std::cout << "char: '" << static_cast<char>(num) << "'" << std::endl;
+		int num = checkChar(input);
 		
 		if (num < INT_MIN || num > INT_MAX)
 		{
@@ -187,15 +194,26 @@ void typeFloat(const std::string &input)
 		typeInt(input);
 }
 
+void typeDouble(const std::string &input)
+{
+	double numD = std::atof(input.c_str());
+	int num = checkChar(input);
+	if (num < INT_MIN || num > INT_MAX)
+		std::cout << "int : impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(num) << std::endl;
+	std::cout << "float: " << fixedOne << static_cast<float>(numD) << "f" << std::endl;
+	std::cout << "double: " << fixedOne << static_cast<double>(numD) << std::endl;
+}
+
 void ScalarConverter::convert(const std::string &input) 
 {
-	
-	
-	//typeChar(input);
-	//typeInt(input);
-	typeFloat(input);
-	//typeDouble(input);
-
-
-	
+	if (isAlpha(input))	
+		typeChar(input, true);
+	else if (isDigitSigno(input))
+		typeInt(input);
+	else if (input[input.size() - 1] == 'f')
+		typeFloat(input);
+	else if (input[input.size() - 1] != 'f' && input.find('.'))
+		typeDouble(input);
 }
