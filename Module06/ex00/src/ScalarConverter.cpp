@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:38:30 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/11 12:47:58 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/13 09:59:30 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,10 @@ void typeChar(const std::string &input, bool messageChar)
 	else if (input.size() > 1)
 	{
 		if (input[0] == '-')
-			std::cout << "char: Non displayable" << std::endl;
-		else
 		{
-			std::cout << "char: impossible" << std::endl;
-			std::cout << "int: impossible" << std::endl;
-			std::cout << "float: impossible" << std::endl;
-			std::cout << "double: impossible" << std::endl;
+			std::cout << "char: Non displayable" << std::endl;
+			messageChar = false;
 		}
-		messageChar = false;
 	}
 	
 	if (messageChar)
@@ -143,9 +138,14 @@ void typeInt(const std::string &input)
 			std::cout << "double: " << fixedOne << static_cast<double>(num) << std::endl;
 		}
 	}
-	else if (!isDigit(input))
+	else if (isDigitSigno(input))
+	{
 		typeChar(input, true);
-		
+		int num = std::atol(input.c_str());
+		std::cout << "int: " << static_cast<int>(num) << std::endl;
+		std::cout << "float: " << fixedOne << static_cast<float>(num) << "f" << std::endl;
+		std::cout << "double: " << fixedOne << static_cast<double>(num) << std::endl;
+	}
 }
 
 void typeFloat(const std::string &input)
@@ -206,9 +206,23 @@ void typeDouble(const std::string &input)
 	std::cout << "double: " << fixedOne << static_cast<double>(numD) << std::endl;
 }
 
+void typePseudo(const std::string &input)
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	if (input == "+inff" || input == "-inff" || input == "nanf")
+		std::cout << "float: " << input << std::endl;
+	else
+		std::cout << "float: " << input << "f" << std::endl;
+	std::cout << "double: " << input << std::endl;
+}
+
 void ScalarConverter::convert(const std::string &input) 
 {
-	if (isAlpha(input))	
+	if (input == "nan" || input == "+inf" || input == "-inf" ||
+		input == "nanf" || input == "+inff" || input == "-inff")
+		typePseudo(input);
+	else if (isAlpha(input))	
 		typeChar(input, true);
 	else if (isDigitSigno(input))
 		typeInt(input);
