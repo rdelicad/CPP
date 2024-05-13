@@ -6,14 +6,14 @@
 #    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 13:33:45 by rdelicad          #+#    #+#              #
-#    Updated: 2024/05/13 10:48:00 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/05/13 12:09:10 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAG = -Wall -Wextra -Werror -std=c++98 -Wshadow -g
 NAME = converter
-SRC = main.cpp Serializer.cpp
+SRC = main.cpp Base.cpp A.cpp B.cpp C.cpp
 SRCS = $(addprefix src/, $(SRC))
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 all: $(NAME)
