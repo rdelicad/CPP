@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 12:28:52 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/13 13:21:07 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/13 13:41:33 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ Base *generate(void)
 
 void identify(Base *p)
 {
+	if (p == NULL)
+    {
+        std::cout << "NULL pointer" << std::endl;
+        return;
+    }
+	
 	if (dynamic_cast<A*>(p))
 		std::cout << "A" << std::endl;
 	else if (dynamic_cast<B*>(p))
@@ -39,5 +45,29 @@ void identify(Base *p)
 
 void identify(Base &p)
 {
-	identify(&p);
+	try
+    {
+        dynamic_cast<A&>(p);
+        std::cout << "A" << std::endl;
+    }
+    catch (std::exception&)
+    {
+        try
+        {
+            dynamic_cast<B&>(p);
+            std::cout << "B" << std::endl;
+        }
+        catch (std::exception&)
+        {
+            try
+            {
+                dynamic_cast<C&>(p);
+                std::cout << "C" << std::endl;
+            }
+            catch (std::exception&)
+            {
+                std::cout << "Unknown type" << std::endl;
+            }
+        }
+    }
 }
