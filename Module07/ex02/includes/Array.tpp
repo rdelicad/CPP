@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 11:52:20 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/18 12:23:26 by rdelicad         ###   ########.fr       */
+/*   Created: 2024/05/20 17:57:23 by rdelicad          #+#    #+#             */
+/*   Updated: 2024/05/20 18:52:47 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Array<T>::~Array()
 }
 
 template<typename T>
-Array<T>::Array(unsinged int n)
+Array<T>::Array(unsigned int n)
 : _array(new T[n]), _size(n)
 {
 	std::cout << "\033[2;34mConstructor array n elemens\033[0m" << std::endl;
@@ -50,7 +50,7 @@ Array<T>::Array(const Array &copy)
 template<typename T> 
 Array<T> &Array<T>::operator=(const Array &other)
 {
-	if (this !+ other)
+	if (this != other)
 	{
 		if (_array)
 			delete[] _array;
@@ -64,4 +64,24 @@ Array<T> &Array<T>::operator=(const Array &other)
 		}
 	}
 	return *this;
+}
+
+template<typename T>
+T &Array<T>::operator[](const size_t index)
+{
+	if (index >= _size)
+		throw outOfRangeException();
+	return _array[index];
+}
+
+template<typename T>
+size_t Array<T>::size() const
+{
+	return _size;
+}
+
+template<typename T>
+const char *Array<T>::outOfRangeException::what() const throw()
+{
+	return "\033[1;31mError: out of range\033[0m";
 }
