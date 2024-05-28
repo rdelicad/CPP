@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:49:23 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/23 17:22:04 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:26:08 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,33 @@ Span::Span(size_t n)
 : _n(n)
 {}
 
-void Span::addNumber(int number)
+void Span::addNumber(std::vector<int> const &numbers)
 {
-	if (_numbers.size() >= _n) {
-		throw maxNumberException();
+	size_t i = 0;
+	while (i < numbers.size()) 
+	{
+		try {
+			if (_numbers.size() >= _n) {
+				throw maxNumberException();
+			}
+			_numbers.push_back(numbers[i]);
+		} catch (const maxNumberException &e) {
+			std::cerr << e.what() << std::endl;
+			return;
+		}
+		i++;
 	}
-	
-	_numbers.push_back(number);
 }
 
 int Span::shortestSpan()
 {
-	if (_numbers.size() < 2) {
-		throw Span::sectionException();
+	try {
+		if (_numbers.size() < 2) {
+			throw Span::sectionException();
+		}
+	} catch (const sectionException &e) {
+		std::cerr << e.what() << std::endl;
+		return 0;
 	}
 	
 	std::sort(_numbers.begin(), _numbers.end());
@@ -44,12 +58,19 @@ int Span::shortestSpan()
 	return shortest;
 }
 
-int longestSpan() 
+int Span::longestSpan() 
 {
-    if (_numbers.size() < 2) {
-        throw Span::sectionException();
-    }
+	try {
+		if (_numbers.size() < 2) {
+			throw Span::sectionException();
+		}
+	} catch (const sectionException &e) {
+		std::cerr << e.what() << std::endl;
+		return 0;
+	}
 	
-    std::pair<std::vector<int>::iterator, std::vector<int>::iterator> minmax = std::minmax_element(_numbers.begin(), _numbers.end());
-    return *minmax.second - *minmax.first;
+    std::vector<int>::iterator minElement = std::min_element(_numbers.begin(), _numbers.end());
+	std::vector<int>::iterator maxElement = std::max_element(_numbers.begin(), _numbers.end());
+    return *maxElement - *minElement;
 }
+

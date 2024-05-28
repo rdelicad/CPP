@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:29:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/23 16:55:28 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/28 18:05:03 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,23 @@ class Span
 	public:  
 		Span(size_t n);
 		
-		void addNumber(int number);
+		void addNumber(std::vector<int> const &numbers);
 		int shortestSpan();
 		int longestSpan();
 
-		class maxNumberException : std::exception {
-			const char *what() const throw() {
-				return ("\033[1;31mException: impossible to add more elements!!\033[0m"); 
-			}	
+		class maxNumberException : public std::exception {
+			public:  
+				const char *what() const throw() {
+					return ("\033[1;31mException: impossible to add more elements!!\033[0m"); 
+				}	
 		};
 		
-		class sectionException : std::exception {
-			const char *what() const throw() {
-				return ("\033[1;34mSection no found!!\033[0m");
-			}
-		};
+		class sectionException : public std::exception {
+			public:  
+				const char *what() const throw() {
+					return ("\033[1;34mSection no found!!\033[0m");
+				}
+			};
 };
 
 #endif
