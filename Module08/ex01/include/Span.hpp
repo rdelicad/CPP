@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:29:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/28 18:05:03 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:20:30 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ class Span
 	public:  
 		Span(size_t n);
 		
-		void addNumber(std::vector<int> const &numbers);
+		void addNumber(const int num);
 		int shortestSpan();
 		int longestSpan();
+		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 		class maxNumberException : public std::exception {
 			public:  

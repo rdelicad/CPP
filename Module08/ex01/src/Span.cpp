@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:49:23 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/28 18:26:08 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/31 12:45:48 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,31 @@ Span::Span(size_t n)
 : _n(n)
 {}
 
-void Span::addNumber(std::vector<int> const &numbers)
+void Span::addNumber(const int num)
 {
-	size_t i = 0;
-	while (i < numbers.size()) 
+	try 
 	{
-		try {
-			if (_numbers.size() >= _n) {
-				throw maxNumberException();
-			}
-			_numbers.push_back(numbers[i]);
-		} catch (const maxNumberException &e) {
-			std::cerr << e.what() << std::endl;
-			return;
-		}
-		i++;
+		if (_numbers.size() < _n) 
+			_numbers.push_back(num);
+		else
+			throw maxNumberException();
+	} 
+	catch (const maxNumberException &e) 
+	{
+		std::cerr << e.what() << std::endl;
+		return;
 	}
 }
 
 int Span::shortestSpan()
 {
-	try {
-		if (_numbers.size() < 2) {
+	try 
+	{
+		if (_numbers.size() < 2) 
 			throw Span::sectionException();
-		}
-	} catch (const sectionException &e) {
+	} 
+	catch (const sectionException &e) 
+	{
 		std::cerr << e.what() << std::endl;
 		return 0;
 	}
@@ -51,7 +51,7 @@ int Span::shortestSpan()
 	size_t i = 1;
 	while (i < _numbers.size() - 1)
 	{
-		shortest = std::min(shortest, _numbers[1 + 1] - _numbers[i]);
+		shortest = std::min(shortest, _numbers[i + 1] - _numbers[i]);
 		i++;	
 	}
 	
@@ -74,3 +74,16 @@ int Span::longestSpan()
     return *maxElement - *minElement;
 }
 
+void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	while (begin != end)
+	{
+		if (_numbers.size() >= _n)
+			throw maxNumberException();
+		else
+		{
+			_numbers.push_back(*begin);
+			begin++;
+		}
+	}
+}
