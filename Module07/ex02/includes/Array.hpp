@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 11:47:22 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/20 18:35:00 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:43:30 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ class Array
 		};
 };
 
-#include "Array.tpp"
+#include "../src/Array.tpp"
 
 #endif

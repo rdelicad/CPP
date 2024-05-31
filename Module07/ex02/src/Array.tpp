@@ -6,11 +6,11 @@
 /*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:57:23 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/20 18:52:47 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:41:38 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#include "../includes/Array.hpp"
 
 template<typename T>
 Array<T>::Array()
