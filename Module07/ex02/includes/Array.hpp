@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 11:47:22 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/31 14:43:30 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/02 10:43:44 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ class Array
 		};
 };
 
-#include "../src/Array.tpp"
+#include "Array.tpp"
 
 #endif

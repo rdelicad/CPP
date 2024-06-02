@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:57:23 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/31 14:41:38 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/02 10:43:50 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Array.hpp"
+#include "Array.hpp"
 
 template<typename T>
 Array<T>::Array()
