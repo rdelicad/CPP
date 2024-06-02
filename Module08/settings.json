@@ -1,0 +1,22 @@
+{
+    "editor.minimap.enabled": false,
+    "files.associations": {
+        "*.tpp": "cpp"
+    },
+    "workbench.productIconTheme": "fluent-icons",
+    "extensions.ignoreRecommendations": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "none",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "files.autoSave": "afterDelay",
+    "editor.cursorBlinking": "expand",
+    "editor.linkedEditing": true,
+    "editor.guides.bracketPairs": true,
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    "symbols.hidesExplorerArrows": false,
+    "breadcrumbs.enabled": false,
+    "editor.fontSize": 16,
+    "editor.fontFamily": "Cascadia Code",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "380",
+}
