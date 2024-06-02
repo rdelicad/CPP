@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutanStack.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 12:52:49 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/31 14:55:11 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/02 09:28:59 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <string>
 #include <stack>
 
-template <typename T>
+template<typename T>
 class MutanStack : public std::stack<T>
 {
 	MutanStack();

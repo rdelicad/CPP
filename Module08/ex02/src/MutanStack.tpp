@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutanStack.tpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:15:38 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/31 14:20:50 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/02 10:10:08 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ MutanStack<T>::MutanStack(const MutanStack &copy)
 }
 
 template<typename T> 
-MutanStack &MutanStack::operator(const MutanStack &other)
+MutanStack<T> &MutanStack<T>::operator=(const MutanStack<T> &other)l
 {
 	if (this != &other)
 	{
-		this->c = other.c;
+		std::stack<T>::operator=(other);
 	}
 	return *this;
 }
