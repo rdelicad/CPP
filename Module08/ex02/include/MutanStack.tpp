@@ -6,11 +6,11 @@
 /*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 13:15:38 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/02 10:10:08 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/06/02 10:40:47 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/MutanStack.hpp"
+#include "MutanStack.hpp"
 
 template<typename T>
 MutanStack<T>::MutanStack()
@@ -30,7 +30,7 @@ MutanStack<T>::MutanStack(const MutanStack &copy)
 }
 
 template<typename T> 
-MutanStack<T> &MutanStack<T>::operator=(const MutanStack<T> &other)l
+MutanStack<T> &MutanStack<T>::operator=(const MutanStack<T> &other)
 {
 	if (this != &other)
 	{
@@ -42,12 +42,12 @@ MutanStack<T> &MutanStack<T>::operator=(const MutanStack<T> &other)l
 template<typename T>
 typename MutanStack<T>::iterator MutanStack<T>::begin()
 {
-	return this->begin();
+	return this->c.begin();
 }
 
 template<typename T>
 typename MutanStack<T>::iterator MutanStack<T>::end() 
 {
-	return this->end();
+	return this->c.end();
 }
 
