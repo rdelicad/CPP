@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
+#    By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 13:33:45 by rdelicad          #+#    #+#              #
-#    Updated: 2024/05/18 10:28:36 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/06/03 16:36:26 by lxuxer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAG = -Wall -Wextra -Werror -std=c++98 -Wshadow -g
-NAME = type
-SRC = main.cpp
+NAME = btc
+SRC = main.cpp BitcoinExchange.cpp
 SRCS = $(addprefix src/, $(SRC))
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 all: $(NAME)
