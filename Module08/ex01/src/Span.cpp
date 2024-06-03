@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:49:23 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/31 12:45:48 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:26:11 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,16 @@ int Span::shortestSpan()
 		return 0;
 	}
 	
-	std::sort(_numbers.begin(), _numbers.end());
-	int shortest = _numbers[1] - _numbers[0];
+	std::list<int>::iterator it = _numbers.begin();
+	std::list<int>::iterator itNext = _numbers.begin();
+	itNext++;
+	int shortest = *itNext - *it;
 
-	size_t i = 1;
-	while (i < _numbers.size() - 1)
+	while (itNext != _numbers.end()) 
 	{
-		shortest = std::min(shortest, _numbers[i + 1] - _numbers[i]);
-		i++;	
+		shortest = std::min(shortest, *itNext - *it);
+		it++;
+		itNext++;
 	}
 	
 	return shortest;
@@ -69,12 +71,12 @@ int Span::longestSpan()
 		return 0;
 	}
 	
-    std::vector<int>::iterator minElement = std::min_element(_numbers.begin(), _numbers.end());
-	std::vector<int>::iterator maxElement = std::max_element(_numbers.begin(), _numbers.end());
+    std::list<int>::iterator minElement = std::min_element(_numbers.begin(), _numbers.end());
+	std::list<int>::iterator maxElement = std::max_element(_numbers.begin(), _numbers.end());
     return *maxElement - *minElement;
 }
 
-void Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+void Span::addRange(std::list<int>::iterator begin, std::list<int>::iterator end)
 {
 	while (begin != end)
 	{

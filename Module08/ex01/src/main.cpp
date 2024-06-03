@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 17:23:53 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/31 12:48:21 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:14:59 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int main()
     std::cout << "\033[1;32m------Probando addRange--------\033[0m" << std::endl;
     Span sp2 = Span(5);
 
-    std::vector<int> v;
+    std::list<int> v;
     v.push_back(6);
     v.push_back(3);
     v.push_back(17);

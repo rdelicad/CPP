@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 16:29:50 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/05/31 12:20:30 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/03 16:10:54 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 
 #include <iostream>
 #include <exception>
-#include <vector>
+#include <list>
 #include <algorithm>
 
 class Span
 {
 	private:  
 		size_t _n;
-		std::vector<int> _numbers;
+		std::list<int> _numbers;
 	public:  
 		Span(size_t n);
 		
 		void addNumber(const int num);
 		int shortestSpan();
 		int longestSpan();
-		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		void addRange(std::list<int>::iterator begin, std::list<int>::iterator end);
 
 		class maxNumberException : public std::exception {
 			public:  
