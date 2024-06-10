@@ -6,7 +6,7 @@
 /*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:37:14 by lxuxer            #+#    #+#             */
-/*   Updated: 2024/06/10 17:24:03 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/06/10 20:33:28 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
+#include <exception>
+#include <limits>
 
 class BitcoinExchange
 {
@@ -32,6 +34,7 @@ class BitcoinExchange
         ~BitcoinExchange();
         
         void comparePrices(const std::string &inputFile);
+        std::string findClosestPreviousDate(const std::string &date);
     
         class exceptionOpen : public std::exception {
             public:
@@ -39,11 +42,17 @@ class BitcoinExchange
                     return "Error: could not open file.";
                 }
         };
-        class exceptionBadData : public std::exception {
+        class exceptionNoDate : public std::exception {
             public:
                 const char *what() const throw() {
-                    return "Error: bad data.";
-            }
+                    return "Error: no date.";
+                }
+        };
+        class exceptionNegativePrice : public std::exception {
+            public:
+                const char *what() const throw() {
+                    return "Error: not a positive number.";
+                }
         };
 };
     
