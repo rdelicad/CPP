@@ -6,7 +6,7 @@
 /*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:37:14 by lxuxer            #+#    #+#             */
-/*   Updated: 2024/06/03 18:57:22 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/06/10 17:24:03 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class BitcoinExchange
         BitcoinExchange &operator=(const BitcoinExchange &copy);
         ~BitcoinExchange();
         
-        float getBitcoinPrice(const std::string &date);
+        void comparePrices(const std::string &inputFile);
     
         class exceptionOpen : public std::exception {
             public:
