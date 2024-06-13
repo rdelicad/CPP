@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 16:37:14 by lxuxer            #+#    #+#             */
-/*   Updated: 2024/06/10 20:33:28 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:56:15 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,7 @@ class BitcoinExchange
         
         void comparePrices(const std::string &inputFile);
         std::string findClosestPreviousDate(const std::string &date);
-    
-        class exceptionOpen : public std::exception {
-            public:
-                const char *what() const throw() {
-                    return "Error: could not open file.";
-                }
-        };
-        class exceptionNoDate : public std::exception {
-            public:
-                const char *what() const throw() {
-                    return "Error: no date.";
-                }
-        };
-        class exceptionNegativePrice : public std::exception {
-            public:
-                const char *what() const throw() {
-                    return "Error: not a positive number.";
-                }
-        };
+
 };
     
 

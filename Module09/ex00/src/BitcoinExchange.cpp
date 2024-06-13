@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:49:26 by lxuxer            #+#    #+#             */
-/*   Updated: 2024/06/10 20:37:04 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/06/13 18:42:05 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ BitcoinExchange::~BitcoinExchange()
 
 std::string BitcoinExchange::findClosestPreviousDate(const std::string &date)
 {
-    std::string closestDate = ""; //Inicializa la fecha más cercana como vacia
+    //Inicializa la fecha más cercana como vacia
+    std::string closestDate = ""; 
     for (std::map<std::string, float>::iterator it = _bitcoinPrices.begin(); it != _bitcoinPrices.end(); ++it)
     {
         if (it->first < date) // Verifica si la fecha actual es anterior a la fecha dada
@@ -78,14 +79,79 @@ std::string BitcoinExchange::findClosestPreviousDate(const std::string &date)
     return closestDate; // Devuelve la fecha más cercana
 }
 
+static bool parseDate(std::string &date)
+{
+    date.erase(0, date.find_first_not_of(' ')); // espacios en blanco al inicio
+    date.erase(date.find_last_not_of(' ') + 1); // espacios en blanco al final
 
+    // Verifica si la fecha está vacía
+    if (date.empty())
+    {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
+
+    // Verifica si la fecha tiene el formato correcto
+    if (date[4] != '-' || date[7] != '-' || date.size() != 10)
+    {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
+
+    // Extrae el año, el mes y el día de la fecha
+    int year = std::atoi(date.substr(0, 4).c_str());
+    int month = std::atoi(date.substr(5, 2).c_str());
+    int day = std::atoi(date.substr(8, 2).c_str());
+
+    // Verifica si el año es válido
+    if (year <= 0)
+    {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
+
+    // Verifica si el mes es válido
+    if (month <= 0 || month > 12)
+    {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
+
+    // Verifica si el día es válido
+    int maxDay;
+    if (month == 2)
+    {
+        // Febrero
+        bool isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+        maxDay = isLeap ? 29 : 28;
+    }
+    else if (month == 4 || month == 6 || month == 9 || month == 11)
+    {
+        // Abril, junio, septiembre, noviembre
+        maxDay = 30;
+    }
+    else
+    {
+        // Enero, marzo, mayo, julio, agosto, octubre, diciembre
+        maxDay = 31;
+    }
+
+    if (day <= 0 || day > maxDay)
+    {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
+
+    return true;
+}
 // Methods
 void BitcoinExchange::comparePrices(const std::string &inputFile)
 {
     // Abre el archivo de entrada usando el nombre de archivo proporcionado
     std::ifstream file(inputFile.c_str()); 
-    if (!file.is_open()) {
-        throw exceptionOpen();
+    if (!file.is_open()) 
+    {
+        std::cerr << "Error: could not open file." << std::endl;
     }
     
     std::string line;
@@ -97,6 +163,15 @@ void BitcoinExchange::comparePrices(const std::string &inputFile)
         std::getline(iss, date, '|'); // Extrae la fecha hasta el delimitador '|'
         std::getline(iss, valueStr); // Extrae el valor después del delimitador '|'
 
+        // Parsea la fecha
+        if (!parseDate(date))
+        {
+            continue;
+        }
+
+        // Parsea el valor
+        
+        
         // Verifica si el valor está vacío
         if (valueStr.empty())
         {
@@ -119,8 +194,6 @@ void BitcoinExchange::comparePrices(const std::string &inputFile)
             continue;
         }
         
-        try
-        {
              // Verifica si la fecha existe en el mapa de precios
             if (_bitcoinPrices.find(date) == _bitcoinPrices.end()) 
             {
@@ -129,10 +202,6 @@ void BitcoinExchange::comparePrices(const std::string &inputFile)
                 {
                     std::cout << date << " => " << value << " = " << _bitcoinPrices[closestDate] * value << std::endl;
                 }
-                else
-                {
-                    throw exceptionNoDate();   
-                }
             }
             else
             {
@@ -140,9 +209,4 @@ void BitcoinExchange::comparePrices(const std::string &inputFile)
                 std::cout << date << " => " << value << " = " << value * bitcoinPrice << std::endl; // Imprime la fecha, el valor y el resultado
             }
         }
-        catch (const std::exception &e) // Captura cualquier excepción estándar
-        {
-            std::cout << e.what() << std::endl; // Imprime el mensaje de error de la excepción
-        }
-    }
 }
