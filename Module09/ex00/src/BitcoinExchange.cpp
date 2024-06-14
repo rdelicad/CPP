@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:49:26 by lxuxer            #+#    #+#             */
-/*   Updated: 2024/06/13 18:42:05 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/14 16:12:31 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,37 @@ static bool parseDate(std::string &date)
 
     return true;
 }
+
+static bool parseValue(std::string &valueStr, const std::string &date)
+{
+    valueStr.erase(0, valueStr.find_first_not_of(' ')); // espacios en blanco al inicio
+    valueStr.erase(valueStr.find_last_not_of(' ') + 1); // espacios en blanco al final
+
+    // Verifica si el valor está vacío
+    if (valueStr.empty())
+    {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return false;
+    }
+    
+    // Verifica si el valor excede el maximo de int
+    double value = std::atof(valueStr.c_str());
+    if (value > std::numeric_limits<int>::max())
+    {
+        std::cout << "Error: too large a number." << std::endl;
+        return false; 
+    }
+
+    // Verifica si el valor es positivo
+    else if (value <= 0 || value > 1000) 
+    { 
+        std::cout << "Error: not a positive number." << std::endl;
+        return false;
+    }
+    
+    return true;
+}
+
 // Methods
 void BitcoinExchange::comparePrices(const std::string &inputFile)
 {
@@ -170,27 +201,8 @@ void BitcoinExchange::comparePrices(const std::string &inputFile)
         }
 
         // Parsea el valor
-        
-        
-        // Verifica si el valor está vacío
-        if (valueStr.empty())
+        if (!parseValue(valueStr, date))
         {
-            std::cout << "Error: bad input => " << date << std::endl; 
-            continue;
-        }
-        
-        // Verifica si el valor excede el maximo de int
-        double value = std::atof(valueStr.c_str());
-        if (value > std::numeric_limits<int>::max())
-        {
-            std::cout << "Error: too large a number." << std::endl; 
-            continue;
-        }
-
-        // Verifica si el valor es positivo
-        if (value <= 0) 
-        { 
-            std::cout << "Error: not a positive number." << std::endl;
             continue;
         }
         
