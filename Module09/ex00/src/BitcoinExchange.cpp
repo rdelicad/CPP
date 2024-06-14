@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:49:26 by lxuxer            #+#    #+#             */
-/*   Updated: 2024/06/14 16:12:31 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/14 16:30:15 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,18 +156,26 @@ static bool parseValue(std::string &valueStr, const std::string &date)
         std::cout << "Error: bad input => " << date << std::endl;
         return false;
     }
+
+    // Verifica si el valor son solo números
+    for (size_t i = 0; i < valueStr.size(); i++)
+    {
+        if (!std::isdigit(valueStr[i]) && valueStr[i] != '.')
+        {
+            std::cout << "Error: bad input => " << date << std::endl;
+            return false;
+        }
+    }
     
     // Verifica si el valor excede el maximo de int
-    double value = std::atof(valueStr.c_str());
-    if (value > std::numeric_limits<int>::max())
-    {
-        std::cout << "Error: too large a number." << std::endl;
-        return false; 
-    }
-
-    // Verifica si el valor es positivo
-    else if (value <= 0 || value > 1000) 
+    double valueBtc = std::atof(valueStr.c_str());
+    if (valueBtc > 1000) 
     { 
+        std::cout << "Error: too large a number." << std::endl;
+        return false;
+    }
+    else if (valueBtc < 0)
+    {
         std::cout << "Error: not a positive number." << std::endl;
         return false;
     }
@@ -205,20 +213,22 @@ void BitcoinExchange::comparePrices(const std::string &inputFile)
         {
             continue;
         }
+
+        double value = std::atof(valueStr.c_str());
         
-             // Verifica si la fecha existe en el mapa de precios
-            if (_bitcoinPrices.find(date) == _bitcoinPrices.end()) 
+        // Verifica si la fecha existe en el mapa de precios
+        if (_bitcoinPrices.find(date) == _bitcoinPrices.end()) 
+        {
+            std::string closestDate = findClosestPreviousDate(date);
+            if (!closestDate.empty()) // Verifica si se encontró una fecha cercana
             {
-                std::string closestDate = findClosestPreviousDate(date);
-                if (!closestDate.empty()) // Verifica si se encontró una fecha cercana
-                {
-                    std::cout << date << " => " << value << " = " << _bitcoinPrices[closestDate] * value << std::endl;
-                }
-            }
-            else
-            {
-                float bitcoinPrice = _bitcoinPrices[date]; // Obtiene el precio de Bitcoin para la fecha dada
-                std::cout << date << " => " << value << " = " << value * bitcoinPrice << std::endl; // Imprime la fecha, el valor y el resultado
+                std::cout << date << " => " << value << " = " << _bitcoinPrices[closestDate] * value << std::endl;
             }
         }
+        else
+        {
+            float bitcoinPrice = _bitcoinPrices[date]; // Obtiene el precio de Bitcoin para la fecha dada
+            std::cout << date << " => " << value << " = " << value * bitcoinPrice << std::endl; // Imprime la fecha, el valor y el resultado
+        }
+    }
 }
