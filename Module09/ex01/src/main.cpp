@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:49:06 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/17 17:56:27 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/17 19:02:17 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,5 @@ int main(int ac, char **av)
     parseRPN(av[1]);
     RPN rpn(av[1]);
     rpn.calculateRPN();
-    rpn.getRes();
     return 0;
 }

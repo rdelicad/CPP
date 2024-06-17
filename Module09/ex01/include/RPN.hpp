@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:03:16 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/17 17:54:54 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/17 19:16:35 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
+#include <sstream>
 
 class RPN
 {
@@ -25,11 +26,6 @@ class RPN
         RPN(const RPN &copy);
         ~RPN();
         RPN &operator=(const RPN &copy);
-
-        void setRPN(std::string str);
-        std::string getRPN() const;
-        void setRes(std::string str);
-        std::string getRes() const;
 
         void calculateRPN();
     

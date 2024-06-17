@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:41:06 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/17 17:57:28 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/17 19:23:39 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,8 @@ RPN &RPN::operator=(const RPN &copy)
     return (*this);
 } 
 
-void RPN::setRPN(std::string str)
-{
-    this->rpn = str;
-}
-
-std::string RPN::getRPN() const
-{
-    return (this->rpn);
-}
-
-void RPN::setRes(std::string str)
-{
-    this->res = str;
-}
-
-std::string RPN::getRes() const
-{
-    return (this->res);
-}
-
 void RPN::calculateRPN()
 {
-    // meter RPN en stack
     std::stack<int> stack;
     int i = 0;
     while (this->rpn[i])
@@ -68,39 +47,41 @@ void RPN::calculateRPN()
         {
             stack.push(this->rpn[i] - '0');
         }
-        else if (this->rpn[i] == '+')
+        else
         {
             int a = stack.top();
             stack.pop();
             int b = stack.top();
             stack.pop();
-            stack.push(a + b);
-        }
-        else if (this->rpn[i] == '-')
-        {
-            int a = stack.top();
-            stack.pop();
-            int b = stack.top();
-            stack.pop();
-            stack.push(a - b);
-        }
-        else if (this->rpn[i] == '*')
-        {
-            int a = stack.top();
-            stack.pop();
-            int b = stack.top();
-            stack.pop();
-            stack.push(a * b);
-        }
-        else if (this->rpn[i] == '/')
-        {
-            int a = stack.top();
-            stack.pop();
-            int b = stack.top();
-            stack.pop();
-            stack.push(a / b);
+            switch (this->rpn[i])
+            {
+                case '+':
+                    stack.push(b + a);
+                    break;
+                case '-':
+                    stack.push(b - a);
+                    break;
+                case '*':
+                    stack.push(b * a);
+                    break;
+                case '/':
+                    if (a == 0)
+                    {
+                        std::cout << "Error: division by zero" << std::endl;
+                        return;
+                    }
+                    stack.push(b / a);
+                    break;
+                default:
+                    std::cout << "Error: Operator desconocido." << std::endl;
+                    return;
+            }
         }
         i++;
     }
     
+    std::stringstream ss;
+    ss << stack.top();
+    this->res = ss.str();
+    std::cout << this->res << std::endl;
 }
