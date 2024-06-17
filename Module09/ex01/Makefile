@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rdelicad <rdelicad@student.42.com>         +#+  +:+       +#+         #
+#    By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 13:33:45 by rdelicad          #+#    #+#              #
-#    Updated: 2024/05/18 10:28:36 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/06/17 17:34:24 by rdelicad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAG = -Wall -Wextra -Werror -std=c++98 -Wshadow -g
-NAME = type
-SRC = main.cpp
+NAME = RPN 
+SRC = main.cpp RPN.cpp
 SRCS = $(addprefix src/, $(SRC))
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 all: $(NAME)
