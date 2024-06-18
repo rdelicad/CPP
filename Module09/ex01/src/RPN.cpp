@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:41:06 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/17 19:23:39 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:05:36 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,13 @@ void RPN::calculateRPN()
         {
             stack.push(this->rpn[i] - '0');
         }
-        else
+        else if (this->rpn[i] == '+' || this->rpn[i] == '-' || this->rpn[i] == '*' || this->rpn[i] == '/')
         {
+            if (stack.size() < 2)
+            {
+                std::cout << "Error: not enough numbers" << std::endl;
+                return;
+            }
             int a = stack.top();
             stack.pop();
             int b = stack.top();

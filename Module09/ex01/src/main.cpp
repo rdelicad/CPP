@@ -6,7 +6,7 @@
 /*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:49:06 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/17 19:02:17 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/18 16:02:22 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ int main(int ac, char **av)
 {
     if (ac != 2)
     {
-        std::cout << "Usage: ./RPN \"[expression]\" << std::endl";
+        std::cout << "Usage: ./RPN \"[expression]\"" << std::endl;
         return 1;
     }
-    parseRPN(av[1]);
+    if (!parseRPN(av[1]))
+        return 1;
     RPN rpn(av[1]);
     rpn.calculateRPN();
     return 0;
