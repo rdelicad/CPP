@@ -3,31 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:14:07 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/18 19:00:10 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/19 21:28:29 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/PmergeMe.hpp"
 
-static void parseArgs(int ac, char **av)
+static void parseArgs(int ac, char **av, std::vector<int> &vectorData, std::list<int> &listData)
 {
     for (int i = 1; i < ac; i++)
     {
-        //std::cout << av[i] << std::endl;
-        // verficar si es un numero
         for (int j = 0; av[i][j]; j++)
         {
             if (av[i][j] == '+')
                 j++;
-            if (av[i][j] == '0')
+            if (av[i][0] == '0')
             {
                 std::cout << "Error: numero 0" << std::endl;
                 exit(1);
             }
-            if (isdigit(av[i][j]) == 0)
+            else if (isdigit(av[i][j]) == 0)
             {
                 std::cout << "Error" << std::endl;
                 exit(1);
@@ -35,19 +33,14 @@ static void parseArgs(int ac, char **av)
         }
 
         long num = atol(av[i]);
-        // verificar si es INT_MAX
-        if (num > INT_MAX)
+        if (num > INT_MAX || num <= 0)
         {
-            std::cout << "Error: numero INT_MAX" << std::endl;
+            std::cout << "Error: numero" << std::endl;
             exit(1);
         }
         
-        // verificar si es un numero negativo
-        if (num <= 0)
-        {
-            std::cout << "Error: numero negativo" << std::endl;
-            exit(1);
-        }
+        vectorData.push_back(static_cast<int>(num));
+        listData.push_back(static_cast<int>(num));
     }
 }
 
@@ -58,7 +51,34 @@ int main(int ac, char **av)
         std::cout << "Usage: ./PmergeMe [int1] [int2] [int3] ..." << std::endl;
         return 1;
     }
-    parseArgs(ac, av);
+    
+    std::vector<int> vectorData;
+    std::list<int> listData;
+    parseArgs(ac, av, vectorData, listData);
+
+    PmergeMe sorter;
+
+    // Mostrar secuencias antes de ordenas
+    std::cout << "Before vector:    ";
+    sorter.print(vectorData);
+    std::cout << "Before list:      ";
+    sorter.print(listData);
+
+    /* // Ordenar y mostrar secuencias
+    sorter.mergeInsertSort(vectorData);
+    sorter.mergeInsertSort(listData);
+
+    std::cout << "After sorting:" << std::endl;
+    sorter.print(vectorData);
+    sorter.print(listData);
+
+    // Mostrar tiempo de ordenamiento
+    double timeVector = sorter.getTimeSort(vectorData);
+    double timeList = sorter.getTimeSort(listData);
+
+    std::cout << "Time to sort vector: " << timeVector << "s" << std::endl;
+    std::cout << "Time to sort list: " << timeList << "s" << std::endl; */
+       
 
     return 0;
 }

@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+         #
+#    By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 13:33:45 by rdelicad          #+#    #+#              #
-#    Updated: 2024/06/18 17:16:22 by rdelicad         ###   ########.fr        #
+#    Updated: 2024/06/19 21:03:02 by lxuxer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = c++
 CXXFLAG = -Wall -Wextra -Werror -std=c++98 -Wshadow -g
 NAME = PmergeMe
-SRC = main.cpp
+SRC = main.cpp PmergeMe.cpp
 SRCS = $(addprefix src/, $(SRC))
 OBJS = $(addprefix obj/, $(SRC:.cpp=.o))
 all: $(NAME)

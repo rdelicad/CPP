@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:05:27 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/18 18:58:25 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/19 21:24:40 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,29 @@
 # include <list>
 # include <cstdlib>
 # include <climits>
+# include <ctime>
 
 class PmergeMe
 {
+    private:
+        PmergeMe(const PmergeMe &copy);
+        PmergeMe &operator=(const PmergeMe &other);
+
     public:
         PmergeMe();
         ~PmergeMe();
-
-        void sort(std::vector<int> &data);
-        void sort(std::list<int> &data);
         
-    private:
+        // implementa el algoritmo Ford-Johnson
+        void mergeInsertSort(std::vector<int> &data);
+        void mergeInsertSort(std::list<int> &data);
+
+        // imprime la secuencia
+        void print(const std::vector<int> &data) const;
+        void print(const std::list<int> &data) const;
+
+        // devuelve el tiempo para ordenar la secuencia
+        double getTimeSort(std::vector<int> &data);
+        double getTimeSort(std::list<int> &data);
         
 };
 
