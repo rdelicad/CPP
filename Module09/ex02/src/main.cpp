@@ -6,7 +6,7 @@
 /*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:14:07 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/19 21:28:29 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/06/20 20:24:52 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,27 @@ int main(int ac, char **av)
     std::cout << "Before list:      ";
     sorter.print(listData);
 
-    /* // Ordenar y mostrar secuencias
+    // Ordenar y mostrar secuencias
     sorter.mergeInsertSort(vectorData);
     sorter.mergeInsertSort(listData);
 
-    std::cout << "After sorting:" << std::endl;
+    std::cout << "After vector:     ";
     sorter.print(vectorData);
+    std::cout << "After list:       ";
     sorter.print(listData);
 
     // Mostrar tiempo de ordenamiento
     double timeVector = sorter.getTimeSort(vectorData);
     double timeList = sorter.getTimeSort(listData);
 
-    std::cout << "Time to sort vector: " << timeVector << "s" << std::endl;
-    std::cout << "Time to sort list: " << timeList << "s" << std::endl; */
+    int numbers = ac - 1;
+    std::cout << std::fixed << std::setprecision(5);
+    std::cout   << "Time to process a range of " << numbers 
+                << " elements with std::vector: " << timeVector 
+                << " µs" << std::endl;
+    std::cout   << "Time to process a range of " << numbers 
+                << " elements with std::list: " << timeList 
+                << " µs" << std::endl;
        
 
     return 0;
