@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:05:27 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/20 20:18:36 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/06/21 14:00:42 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <list>
 # include <cstdlib>
 # include <climits>
-# include <ctime>
+# include <sys/time.h>
 # include <iomanip>
 
 class PmergeMe

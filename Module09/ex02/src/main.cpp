@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:14:07 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/20 20:24:52 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/06/21 14:20:24 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int main(int ac, char **av)
     double timeList = sorter.getTimeSort(listData);
 
     int numbers = ac - 1;
-    std::cout << std::fixed << std::setprecision(5);
     std::cout   << "Time to process a range of " << numbers 
                 << " elements with std::vector: " << timeVector 
                 << " µs" << std::endl;
