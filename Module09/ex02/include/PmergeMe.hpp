@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:05:27 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/21 14:00:42 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/22 11:56:38 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <vector>
 # include <algorithm>
 # include <iterator>
-# include <list>
+# include <deque>
 # include <cstdlib>
 # include <climits>
 # include <sys/time.h>
@@ -29,6 +29,16 @@ class PmergeMe
     private:
         PmergeMe(const PmergeMe &copy);
         PmergeMe &operator=(const PmergeMe &other);
+        
+        // Para vector
+        void sortPair(std::vector<int> &data, size_t i, size_t j);
+        size_t searchPosition(const std::vector<int> &data, int target, size_t left, size_t right);
+        void insert(std::vector<int> &data, size_t sortedSize, int element);
+
+        // Para deque
+        void sortPair(std::deque<int> &data, size_t index);
+        size_t searchPosition(const std::deque<int> &data, int value);
+        void insert(std::deque<int> &data, int value);
 
     public:
         PmergeMe();
@@ -36,15 +46,15 @@ class PmergeMe
         
         // implementa el algoritmo Ford-Johnson
         void mergeInsertSort(std::vector<int> &data);
-        void mergeInsertSort(std::list<int> &data);
+        void mergeInsertSort(std::deque<int> &data);
 
         // imprime la secuencia
         void print(const std::vector<int> &data) const;
-        void print(const std::list<int> &data) const;
+        void print(const std::deque<int> &data) const;
 
         // devuelve el tiempo para ordenar la secuencia
         double getTimeSort(std::vector<int> &data);
-        double getTimeSort(std::list<int> &data);
+        double getTimeSort(std::deque<int> &data);
         
 };
 

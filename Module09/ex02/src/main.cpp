@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:14:07 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/21 14:20:24 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/06/22 11:27:29 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/PmergeMe.hpp"
 
-static void parseArgs(int ac, char **av, std::vector<int> &vectorData, std::list<int> &listData)
+static void parseArgs(int ac, char **av, std::vector<int> &vectorData, std::deque<int> &dequeData)
 {
     for (int i = 1; i < ac; i++)
     {
@@ -40,7 +40,7 @@ static void parseArgs(int ac, char **av, std::vector<int> &vectorData, std::list
         }
         
         vectorData.push_back(static_cast<int>(num));
-        listData.push_back(static_cast<int>(num));
+        dequeData.push_back(static_cast<int>(num));
     }
 }
 
@@ -53,8 +53,8 @@ int main(int ac, char **av)
     }
     
     std::vector<int> vectorData;
-    std::list<int> listData;
-    parseArgs(ac, av, vectorData, listData);
+    std::deque<int> dequeData;
+    parseArgs(ac, av, vectorData, dequeData);
 
     PmergeMe sorter;
 
@@ -62,27 +62,27 @@ int main(int ac, char **av)
     std::cout << "Before vector:    ";
     sorter.print(vectorData);
     std::cout << "Before list:      ";
-    sorter.print(listData);
+    sorter.print(dequeData);
 
     // Ordenar y mostrar secuencias
     sorter.mergeInsertSort(vectorData);
-    sorter.mergeInsertSort(listData);
+    sorter.mergeInsertSort(dequeData);
 
     std::cout << "After vector:     ";
     sorter.print(vectorData);
-    std::cout << "After list:       ";
-    sorter.print(listData);
+    std::cout << "After deque:      ";
+    sorter.print(dequeData);
 
     // Mostrar tiempo de ordenamiento
     double timeVector = sorter.getTimeSort(vectorData);
-    double timeList = sorter.getTimeSort(listData);
+    double timeDeque = sorter.getTimeSort(dequeData);
 
     int numbers = ac - 1;
     std::cout   << "Time to process a range of " << numbers 
                 << " elements with std::vector: " << timeVector 
                 << " µs" << std::endl;
     std::cout   << "Time to process a range of " << numbers 
-                << " elements with std::list: " << timeList 
+                << " elements with std::deque: " << timeDeque
                 << " µs" << std::endl;
        
 
