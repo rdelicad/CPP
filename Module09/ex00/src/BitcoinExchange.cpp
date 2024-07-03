@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 17:49:26 by lxuxer            #+#    #+#             */
-/*   Updated: 2024/06/14 16:30:15 by rdelicad         ###   ########.fr       */
+/*   Updated: 2024/07/03 23:50:58 by lxuxer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,14 @@ std::string BitcoinExchange::findClosestPreviousDate(const std::string &date)
             break; // Sale del bucle si la fecha actual es posterior a la fecha dada
         }
     }
+    
+    // Verifica si se encontró alguna fecha anterior
+    if (closestDate == "")
+    {
+        // Lanza una excepción o maneja el error de otra manera
+        std::cout << "Error: no previous date found => " << date <<  std::endl;
+    }
+    
     return closestDate; // Devuelve la fecha más cercana
 }
 
