@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:05:27 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/22 11:56:38 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/07/03 16:19:16 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <deque>
 # include <cstdlib>
 # include <climits>
+# include <sstream>
+# include <cstring>
 # include <sys/time.h>
 # include <iomanip>
 
@@ -36,9 +38,9 @@ class PmergeMe
         void insert(std::vector<int> &data, size_t sortedSize, int element);
 
         // Para deque
-        void sortPair(std::deque<int> &data, size_t index);
-        size_t searchPosition(const std::deque<int> &data, int value);
-        void insert(std::deque<int> &data, int value);
+        void sortPair(std::deque<int> &data, size_t i, size_t j);
+        size_t searchPosition(const std::deque<int> &data, int target, size_t left, size_t right);
+        void insert(std::deque<int> &data, size_t sortedSize, int element);
 
     public:
         PmergeMe();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxuxer <lxuxer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rdelicad <rdelicad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 17:14:07 by rdelicad          #+#    #+#             */
-/*   Updated: 2024/06/22 11:27:29 by lxuxer           ###   ########.fr       */
+/*   Updated: 2024/07/03 16:22:48 by rdelicad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,6 @@ static void parseArgs(int ac, char **av, std::vector<int> &vectorData, std::dequ
 
 int main(int ac, char **av)
 {
-    if (ac == 1)
-    {
-        std::cout << "Usage: ./PmergeMe [int1] [int2] [int3] ..." << std::endl;
-        return 1;
-    }
-    
     std::vector<int> vectorData;
     std::deque<int> dequeData;
     parseArgs(ac, av, vectorData, dequeData);
@@ -61,7 +55,7 @@ int main(int ac, char **av)
     // Mostrar secuencias antes de ordenas
     std::cout << "Before vector:    ";
     sorter.print(vectorData);
-    std::cout << "Before list:      ";
+    std::cout << "Before deque:     ";
     sorter.print(dequeData);
 
     // Ordenar y mostrar secuencias
@@ -77,7 +71,7 @@ int main(int ac, char **av)
     double timeVector = sorter.getTimeSort(vectorData);
     double timeDeque = sorter.getTimeSort(dequeData);
 
-    int numbers = ac - 1;
+    int numbers = vectorData.size();
     std::cout   << "Time to process a range of " << numbers 
                 << " elements with std::vector: " << timeVector 
                 << " µs" << std::endl;
